@@ -19,7 +19,6 @@
 		E640934C24CDCADE005B1F6C /* CollectionViewCellLobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E640934B24CDCADE005B1F6C /* CollectionViewCellLobby.swift */; };
 		E640935024D0FC80005B1F6C /* InGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E640934F24D0FC80005B1F6C /* InGameVC.swift */; };
 		E640935B24D25EE6005B1F6C /* CollectionViewCellRankings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E640935A24D25EE6005B1F6C /* CollectionViewCellRankings.swift */; };
-		E67F94A124D888AF008B857A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67F94A024D888AF008B857A /* TableViewCell.swift */; };
 		E6DDAF4824C773270034584F /* AdminConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DDAF4724C773270034584F /* AdminConfigViewController.swift */; };
 		E6DDAF4C24C781390034584F /* TCPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DDAF4B24C781390034584F /* TCPHandler.swift */; };
 		E6DDAF4E24C782670034584F /* BluetoothHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DDAF4D24C782670034584F /* BluetoothHandler.swift */; };
@@ -49,7 +48,6 @@
 		E640934F24D0FC80005B1F6C /* InGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameVC.swift; sourceTree = "<group>"; };
 		E640935A24D25EE6005B1F6C /* CollectionViewCellRankings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellRankings.swift; sourceTree = "<group>"; };
 		E67F949D24D5E3E5008B857A /* laser tag.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "laser tag.entitlements"; sourceTree = "<group>"; };
-		E67F94A024D888AF008B857A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		E6C64D9324C6432E000978AB /* SwiftSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6DDAF4724C773270034584F /* AdminConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminConfigViewController.swift; sourceTree = "<group>"; };
 		E6DDAF4B24C781390034584F /* TCPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPHandler.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			children = (
 				E640934B24CDCADE005B1F6C /* CollectionViewCellLobby.swift */,
 				E640935A24D25EE6005B1F6C /* CollectionViewCellRankings.swift */,
-				E67F94A024D888AF008B857A /* TableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -325,7 +322,6 @@
 				E640934824CB5573005B1F6C /* Player.swift in Sources */,
 				E60F144E24DB73A500E7646D /* NFCWriteHandler.swift in Sources */,
 				E6DDAF4E24C782670034584F /* BluetoothHandler.swift in Sources */,
-				E67F94A124D888AF008B857A /* TableViewCell.swift in Sources */,
 				E640934C24CDCADE005B1F6C /* CollectionViewCellLobby.swift in Sources */,
 				E6EFC3C624D50D0100E44611 /* GameHandler.swift in Sources */,
 			);
