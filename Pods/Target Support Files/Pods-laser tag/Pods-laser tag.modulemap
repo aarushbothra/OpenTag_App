@@ -1,0 +1,6 @@
+framework module Pods_laser_tag {
+  umbrella header "Pods-laser tag-umbrella.h"
+
+  export *
+  module * { export * }
+}
