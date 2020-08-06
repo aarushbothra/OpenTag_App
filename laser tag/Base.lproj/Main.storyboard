@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="laser_tag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="OpenTag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +110,7 @@
         <!--Player Waiting View Controller-->
         <scene sceneID="aGU-Tj-Yu7">
             <objects>
-                <viewController storyboardIdentifier="PlayerWaitingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pX-wM-mLJ" customClass="PlayerWaitingViewController" customModule="laser_tag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerWaitingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pX-wM-mLJ" customClass="PlayerWaitingViewController" customModule="OpenTag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eaA-Xb-UZZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,7 +165,7 @@
         <!--Admin Config View Controller-->
         <scene sceneID="9Wk-le-qum">
             <objects>
-                <viewController storyboardIdentifier="AdminConfigVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AmV-7Y-5yg" customClass="AdminConfigViewController" customModule="laser_tag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AdminConfigVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AmV-7Y-5yg" customClass="AdminConfigViewController" customModule="OpenTag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="euA-zL-ayf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -342,7 +342,7 @@
         <!--Player Set UpVC-->
         <scene sceneID="rd4-qQ-Ppk">
             <objects>
-                <viewController storyboardIdentifier="PlayerSetUpVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eYx-Sq-xBR" customClass="PlayerSetUpVC" customModule="laser_tag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerSetUpVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eYx-Sq-xBR" customClass="PlayerSetUpVC" customModule="OpenTag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gzy-b7-IdE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -447,7 +447,7 @@
         <!--LobbyVC-->
         <scene sceneID="WyY-Oc-cA7">
             <objects>
-                <viewController storyboardIdentifier="LobbyVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4GL-SW-9Ma" customClass="LobbyVC" customModule="laser_tag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LobbyVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4GL-SW-9Ma" customClass="LobbyVC" customModule="OpenTag" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GUq-Jz-8z8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -462,7 +462,7 @@
                                     <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="Cell" translatesAutoresizingMaskIntoConstraints="NO" id="Ssy-tL-F03" userLabel="Cell" customClass="CollectionViewCellLobby" customModule="laser_tag">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" translatesAutoresizingMaskIntoConstraints="NO" id="Ssy-tL-F03" userLabel="Cell" customClass="CollectionViewCellLobby" customModule="OpenTag">
                                         <rect key="frame" x="5" y="7" width="280" height="414"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0Sy-vf-Tq3">
@@ -574,7 +574,7 @@
         <!--In GameVC-->
         <scene sceneID="d0w-Rx-LZH">
             <objects>
-                <viewController storyboardIdentifier="InGameVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lbb-TB-4aH" customClass="InGameVC" customModule="laser_tag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InGameVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lbb-TB-4aH" customClass="InGameVC" customModule="OpenTag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kNb-3q-iKY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -670,7 +670,7 @@
                                             <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="RankingCell" translatesAutoresizingMaskIntoConstraints="NO" id="ujL-rg-bsv" customClass="CollectionViewCellRankings" customModule="laser_tag" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="RankingCell" translatesAutoresizingMaskIntoConstraints="NO" id="ujL-rg-bsv" customClass="CollectionViewCellRankings" customModule="OpenTag" customModuleProvider="target">
                                                 <rect key="frame" x="5" y="33" width="341" height="300"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mSJ-I8-OfK">
@@ -830,7 +830,7 @@
         <!--Game OverVC-->
         <scene sceneID="zd3-Dt-sYF">
             <objects>
-                <viewController storyboardIdentifier="GameOverVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GEh-Gw-t2x" customClass="GameOverVC" customModule="laser_tag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameOverVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GEh-Gw-t2x" customClass="GameOverVC" customModule="OpenTag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="35t-3M-Spn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -893,7 +893,7 @@
         <!--Starting CountdownVC-->
         <scene sceneID="oEX-O0-1lM">
             <objects>
-                <viewController storyboardIdentifier="StartingCountdownVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g5O-dn-IVq" customClass="StartingCountdownVC" customModule="laser_tag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartingCountdownVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g5O-dn-IVq" customClass="StartingCountdownVC" customModule="OpenTag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sna-Wm-Hsh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -947,7 +947,7 @@
         <!--Death ScreenVC-->
         <scene sceneID="T9L-qh-OJ9">
             <objects>
-                <viewController storyboardIdentifier="DeathScreenVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="650-9W-RSi" customClass="DeathScreenVC" customModule="laser_tag" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeathScreenVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="650-9W-RSi" customClass="DeathScreenVC" customModule="OpenTag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z2l-pn-W7Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

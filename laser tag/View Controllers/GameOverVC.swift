@@ -48,35 +48,40 @@ extension GameOverVC: UITableViewDelegate, UITableViewDataSource {
         if Game.teamSetting > 0 {
             return Game.teamSetting + 1
         } else {
-            return 0
+            return 1
         }
         
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = "Team \(section + 1): \(handleGame.findTeamScore(team: section + 1))"
-        switch section + 1 {
-        case 1:
-            label.backgroundColor = UIColor.red
-        case 2:
-            label.backgroundColor = UIColor.blue
-        case 3:
-            label.backgroundColor = UIColor.green
-        case 4:
-            label.backgroundColor = UIColor.purple
-        case 5:
-            label.backgroundColor = UIColor.orange
-        case 6:
-            label.backgroundColor = UIColor.cyan
-        case 7:
-            label.backgroundColor = UIColor.yellow
-        case 8:
-            label.backgroundColor = UIColor.magenta
-        default:
-            label.backgroundColor = UIColor.systemBlue
+        if Game.teamSetting > 0 {
+            let label = UILabel()
+            label.text = "Team \(section + 1): \(handleGame.findTeamScore(team: section + 1))"
+            switch section + 1 {
+            case 1:
+                label.backgroundColor = UIColor.red
+            case 2:
+                label.backgroundColor = UIColor.blue
+            case 3:
+                label.backgroundColor = UIColor.green
+            case 4:
+                label.backgroundColor = UIColor.purple
+            case 5:
+                label.backgroundColor = UIColor.orange
+            case 6:
+                label.backgroundColor = UIColor.cyan
+            case 7:
+                label.backgroundColor = UIColor.yellow
+            case 8:
+                label.backgroundColor = UIColor.magenta
+            default:
+                label.backgroundColor = UIColor.systemBlue
+            }
+            return label
+        } else {
+            return UIView()
         }
-        return label
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,6 +94,7 @@ extension GameOverVC: UITableViewDelegate, UITableViewDataSource {
             }
             return team.count
         } else {
+            print("players.count: \(Players.count)")
             return Players.count
         }
         
@@ -107,6 +113,7 @@ extension GameOverVC: UITableViewDelegate, UITableViewDataSource {
             cell?.backgroundColor = UIColor.systemGray2
             cell?.textLabel?.text = "\(team[indexPath.row].username) | K: \(team[indexPath.row].kills) D: \(team[indexPath.row].deaths)"
         } else {
+            print("creating players cell")
             cell?.textLabel?.text = "\(Players[indexPath.row].username) | K: \(Players[indexPath.row].kills) D: \(Players[indexPath.row].deaths)"
         }
         

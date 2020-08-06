@@ -20,5 +20,394 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E670C014-70FF-45FD-B5B6-89AA9543D291"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "laser tag/View Controllers/LobbyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "375A8CED-9517-4E7A-A0B2-4B78CA153F98"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "laser tag/Cells/CollectionViewCellLobby.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "CollectionViewCellLobby"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "375A8CED-9517-4E7A-A0B2-4B78CA153F98 - eab4949616cc2c8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.rosterTV.getter : Swift.Optional&lt;__C.UITableView&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "375A8CED-9517-4E7A-A0B2-4B78CA153F98 - 21eaad645b3f882"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.rosterTV.setter : Swift.Optional&lt;__C.UITableView&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "375A8CED-9517-4E7A-A0B2-4B78CA153F98 - 866042cec583b3f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.rosterTV.modify : Swift.Optional&lt;__C.UITableView&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "375A8CED-9517-4E7A-A0B2-4B78CA153F98 - a4e88a1a480e3cfc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.rosterTV.modify : Swift.Optional&lt;__C.UITableView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "375A8CED-9517-4E7A-A0B2-4B78CA153F98 - df3183498e0ccc15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.init(frame: __C.CGRect) -&gt; OpenTag.CollectionViewCellLobby"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "375A8CED-9517-4E7A-A0B2-4B78CA153F98 - c7f923f169e61ffc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;OpenTag.CollectionViewCellLobby&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "90E8A1A7-9C11-4B31-AFE6-ADBF3D407964"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "laser tag/Cells/CollectionViewCellLobby.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BA82B88-B4A7-4479-B721-48AC1140A329"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "laser tag/Cells/CollectionViewCellLobby.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "CollectionViewCellLobby"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D72AA5B2-23A3-4D7B-A735-5B4B03376DCA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "laser tag/Cells/CollectionViewCellLobby.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEFBA9CE-32A4-4121-BD85-84B1322086BD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "laser tag/View Controllers/LobbyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "859985FB-E40C-40D2-A3D1-FE48F17A8035"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "laser tag/Cells/CollectionViewCellLobby.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "CollectionViewCellLobby"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "859985FB-E40C-40D2-A3D1-FE48F17A8035 - 894be7c192bb1516"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.teamLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "859985FB-E40C-40D2-A3D1-FE48F17A8035 - c1cf96142393f12a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.teamLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "859985FB-E40C-40D2-A3D1-FE48F17A8035 - d5d7ec7690ba0c19"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.teamLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "859985FB-E40C-40D2-A3D1-FE48F17A8035 - 4be89bb40193b0da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.teamLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "859985FB-E40C-40D2-A3D1-FE48F17A8035 - df3183498e0ccc15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.init(frame: __C.CGRect) -&gt; OpenTag.CollectionViewCellLobby"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "228">
+               </Location>
+               <Location
+                  uuid = "859985FB-E40C-40D2-A3D1-FE48F17A8035 - c7f923f169e61ffc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;OpenTag.CollectionViewCellLobby&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "248">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "19B01BDC-89F3-4696-8532-B893F9471080"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "laser tag/Cells/CollectionViewCellLobby.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "CollectionViewCellLobby"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "19B01BDC-89F3-4696-8532-B893F9471080 - 728aa2593d4e7d10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.__deallocating_deinit"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "19B01BDC-89F3-4696-8532-B893F9471080 - 1c366ce263ac3700"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.__allocating_init(frame: __C.CGRect) -&gt; OpenTag.CollectionViewCellLobby"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "19B01BDC-89F3-4696-8532-B893F9471080 - df3183498e0ccc15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.init(frame: __C.CGRect) -&gt; OpenTag.CollectionViewCellLobby"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "19B01BDC-89F3-4696-8532-B893F9471080 - 652e09c21bdf308f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;OpenTag.CollectionViewCellLobby&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "19B01BDC-89F3-4696-8532-B893F9471080 - c7f923f169e61ffc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenTag.CollectionViewCellLobby.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;OpenTag.CollectionViewCellLobby&gt;"
+                  moduleName = "OpenTag"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aarushbothra/Documents/Xcode%20projects/laser%20tag/laser%20tag/Cells/CollectionViewCellLobby.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
