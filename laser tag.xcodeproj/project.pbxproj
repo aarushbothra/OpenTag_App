@@ -480,7 +480,7 @@
 				CODE_SIGN_ENTITLEMENTS = "laser tag/laser tag.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KG885U9N7S;
 				INFOPLIST_FILE = "laser tag/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -507,7 +507,7 @@
 				CODE_SIGN_ENTITLEMENTS = "laser tag/laser tag.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KG885U9N7S;
 				INFOPLIST_FILE = "laser tag/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
