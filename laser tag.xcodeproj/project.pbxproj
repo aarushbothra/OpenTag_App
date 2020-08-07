@@ -13,6 +13,8 @@
 		E60F144E24DB73A500E7646D /* NFCWriteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F144D24DB73A500E7646D /* NFCWriteHandler.swift */; };
 		E60F145024DB740200E7646D /* NFCReadHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F144F24DB740200E7646D /* NFCReadHandler.swift */; };
 		E60F145324DC48BC00E7646D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E4F5F524AFFE2F00C18A42 /* Assets.xcassets */; };
+		E60F145924DCE5A100E7646D /* ShowPlusOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F145824DCE5A100E7646D /* ShowPlusOptions.swift */; };
+		E60F145B24DCE5B300E7646D /* ShowMinusOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F145A24DCE5B300E7646D /* ShowMinusOptions.swift */; };
 		E637A5E924D3AFFD0042D233 /* StartingCountdownVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E637A5E824D3AFFD0042D233 /* StartingCountdownVC.swift */; };
 		E640934824CB5573005B1F6C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E640934724CB5573005B1F6C /* Player.swift */; };
 		E640934A24CC95FD005B1F6C /* LobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E640934924CC95FD005B1F6C /* LobbyVC.swift */; };
@@ -40,6 +42,8 @@
 		E60F144924DA559100E7646D /* GameOverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverVC.swift; sourceTree = "<group>"; };
 		E60F144D24DB73A500E7646D /* NFCWriteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCWriteHandler.swift; sourceTree = "<group>"; };
 		E60F144F24DB740200E7646D /* NFCReadHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCReadHandler.swift; sourceTree = "<group>"; };
+		E60F145824DCE5A100E7646D /* ShowPlusOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPlusOptions.swift; sourceTree = "<group>"; };
+		E60F145A24DCE5B300E7646D /* ShowMinusOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMinusOptions.swift; sourceTree = "<group>"; };
 		E637A5E824D3AFFD0042D233 /* StartingCountdownVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingCountdownVC.swift; sourceTree = "<group>"; };
 		E63F2F3024BFD14B003207C1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		E640934724CB5573005B1F6C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 			children = (
 				E637A5E824D3AFFD0042D233 /* StartingCountdownVC.swift */,
 				E60F144724DA285300E7646D /* DeathScreenVC.swift */,
+				E60F145824DCE5A100E7646D /* ShowPlusOptions.swift */,
+				E60F145A24DCE5B300E7646D /* ShowMinusOptions.swift */,
 			);
 			path = AlertVCs;
 			sourceTree = "<group>";
@@ -318,7 +324,9 @@
 				E6DDAF5024C8ADB80034584F /* PlayerWaitingViewController.swift in Sources */,
 				E6DDAF5224CA76980034584F /* PlayerSetUpVC.swift in Sources */,
 				E60F144824DA285300E7646D /* DeathScreenVC.swift in Sources */,
+				E60F145B24DCE5B300E7646D /* ShowMinusOptions.swift in Sources */,
 				E6DDAF4C24C781390034584F /* TCPHandler.swift in Sources */,
+				E60F145924DCE5A100E7646D /* ShowPlusOptions.swift in Sources */,
 				E640934824CB5573005B1F6C /* Player.swift in Sources */,
 				E60F144E24DB73A500E7646D /* NFCWriteHandler.swift in Sources */,
 				E6DDAF4E24C782670034584F /* BluetoothHandler.swift in Sources */,
@@ -472,6 +480,7 @@
 				CODE_SIGN_ENTITLEMENTS = "laser tag/laser tag.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = KG885U9N7S;
 				INFOPLIST_FILE = "laser tag/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -479,6 +488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ab.openTag;
 				PRODUCT_NAME = OpenTag;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -497,6 +507,7 @@
 				CODE_SIGN_ENTITLEMENTS = "laser tag/laser tag.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = KG885U9N7S;
 				INFOPLIST_FILE = "laser tag/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -504,6 +515,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ab.openTag;
 				PRODUCT_NAME = OpenTag;
 				PROVISIONING_PROFILE_SPECIFIER = "";

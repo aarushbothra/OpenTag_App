@@ -23,6 +23,8 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
     
     @IBOutlet var healthBar: UIProgressView!
     
+    @IBOutlet var plusButton: UIButton!
+    @IBOutlet var minusButton: UIButton!
     
     @IBOutlet var healthBarView: UIView!
     @IBOutlet var ammoView: UIView!
@@ -162,6 +164,23 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
         inGameCV.reloadData()
     }
     
+    @IBAction func plusButton(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let showPlusOptionsVC = mainStoryboard.instantiateViewController(identifier: "ShowPlusOptionsVC") as! ShowPlusOptions
+        
+        present(showPlusOptionsVC, animated: true)
+        print("presenting plus options")
+    }
+    
+    @IBAction func minusButton(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let showMinusOptionsVC = mainStoryboard.instantiateViewController(identifier: "ShowMinusOptionsVC") as! ShowMinusOptions
+        
+        present(showMinusOptionsVC, animated: true)
+        print("presenting minus options")
+    }
     
     func switchToDeathScreen(string: String){
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)

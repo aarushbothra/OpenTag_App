@@ -109,10 +109,10 @@ class LobbyVC: UIViewController, BTDelegateLobby, TCPDelegateLobby {
         for player in Players{
             if Game.teamSetting > 0 {
                 playersByTeam[player.team-1].append(player)
-                NSLog("appending \(player.username) to \(player.team-1) in refresh")
+               // NSLog("appending \(player.username) to \(player.team-1) in refresh")
             }
         }
-        print("reloading")
+       // print("reloading")
         lobbyCV.reloadData()
         
     }

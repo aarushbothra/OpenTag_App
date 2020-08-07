@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>For communicating with peripherals</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -17,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>Item 0</key>
 	<string>com.apple.developer.nfc.readersession.iso7816.select-identifiers</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -27,6 +25,8 @@
 	<key>NFCReaderUsageDescription</key>
 	<string>For creating and reading NFC tags</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>For communicating with peripherals</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>For communicating with peripherals</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

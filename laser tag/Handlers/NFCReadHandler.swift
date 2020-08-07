@@ -19,10 +19,17 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
     
     var deathScreenNFC:  NFCDelegateDeathScreen!
     
-    
+    var readForRefill = false
     
     func readRespawnPoint() {
-        
+        readForRefill = false
+        readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
+        readSession?.alertMessage = "Hold your phone near the respawn NFC tag"
+        readSession.begin()
+    }
+    
+    func readRefillAmmoAndHealth() {
+        readForRefill = true
         readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
         readSession?.alertMessage = "Hold your phone near the respawn NFC tag"
         readSession.begin()
@@ -44,8 +51,13 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
         DispatchQueue.main.async {
             switch nfcMessage {
             case "respawn":
-                self.deathScreenNFC.respawn()
-                session.invalidate()
+                if self.readForRefill {
+                    handleGame.respawn()
+                } else {
+                    self.deathScreenNFC.respawn()
+                   
+                }
+                 session.invalidate()
             case "invalid":
                 session.alertMessage = "Not a valid NFC tag"
                 session.invalidate()
