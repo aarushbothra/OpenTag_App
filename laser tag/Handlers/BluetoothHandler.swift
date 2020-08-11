@@ -145,12 +145,13 @@ extension BluetoothHandler: CBCentralManagerDelegate {
      
     
     public func connectToGun() {
-        //once manager bluetooth is on, manager scans for gun
+        
         self.centralManager.scanForPeripherals(withServices: [gunServiceUUID])
     }
     
     //function called after manager has found gun
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        centralManager.stopScan()
         //peripheral is gun
         print(peripheral)
         laserTagGun = peripheral
@@ -158,7 +159,7 @@ extension BluetoothHandler: CBCentralManagerDelegate {
         //points the peripheral to its delegate function
         laserTagGun.delegate = self
         
-        centralManager.stopScan()
+        
         centralManager.connect(laserTagGun)
         
     }
@@ -192,7 +193,7 @@ extension BluetoothHandler: CBCentralManagerDelegate {
         gunID = UInt8(ID)
         var bytes = [UInt8](repeating: 0, count: 20)
         bytes[0] = setCommandID()
-        bytes[2] = 128
+        bytes[2] = 2
         bytes[4] = gunID
         
         print("Gun ID bytes: \(bytes)")
@@ -331,11 +332,15 @@ extension BluetoothHandler: CBPeripheralDelegate{
         let characteristicData = characteristic.value!
         let byteArray = [UInt8](characteristicData)
         
+        //playerHit
         if networking.gameStarted && byteArray[9] > 0 {
             print("")
             NSLog("\(byteArray)")
             print("")
             
+            if byteArray[9]/4 == gunID {
+                print("-----------------GUN IDS MATCH--------------------")
+            }
             handleGame.onPlayerHit(gunID: Int(byteArray[9] / 4))
         }
         

@@ -197,10 +197,10 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         let gameOverVC = mainStoryboard.instantiateViewController(identifier: "GameOverVC") as! GameOverVC
-        
+         bluetooth.disconnectGun()
         self.navigationController?.pushViewController(gameOverVC, animated: true)
         print("switching to gameOverVC")
-        bluetooth.disconnectGun()
+       
     }
     
     
@@ -208,10 +208,10 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         let mainViewController = mainStoryboard.instantiateViewController(identifier: "MainVC") as! ViewController
-        
+        bluetooth.disconnectGun()
         self.navigationController?.pushViewController(mainViewController, animated: true)
         print("switching to mainVC")
-        bluetooth.disconnectGun()
+        
     }
     
     

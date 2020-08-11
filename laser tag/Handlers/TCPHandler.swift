@@ -95,16 +95,46 @@ class TCPHandler: NSObject{
     public func serverListener(){
             let bytes = [UInt8](repeating: 0, count: 1)
             while readServerMessage{
-                let message = client.read(79, timeout: 1)
+                var byteArray = [UInt8](repeating: 0, count: 20)
+                byteArray[0] = 252
                 
-                
-                if message != nil{
-                    print("Message Received!")
-                    print(String(bytes: message ?? bytes, encoding: .utf8)!)
+                switch client.send(data: byteArray) {
+                case .success:
+                    let message = client.read(79, timeout: 1)
                     
-                    serverMessageParser(serverMessage: serverMessageToIntArray(str: String(bytes: message ?? bytes, encoding: .utf8)!))
+                    if message != nil{
+                        print("Message Received!")
+                        print(String(bytes: message ?? bytes, encoding: .utf8)!)
+                        
+                        serverMessageParser(serverMessage: serverMessageToIntArray(str: String(bytes: message ?? bytes, encoding: .utf8)!))
+                        
+                    }
+                case .failure(_):
+                    client.close()
+                    readServerMessage = false
+                    DispatchQueue.main.async {
+                        print("server forcibly disconnected")
+                        switch self.activeVC{
+                        case "admin":
+                            self.adminVCTCP.restart()
+                        case "playerWaiting":
+                            self.playerWaitingVCTCP.restart()
+                        case "playerSetup":
+                            self.playerSetupVCTCP.restart()
+                        case "lobby":
+                            self.lobbyVCTCP.restart()
+                        case "inGame":
+                            self.inGameVCTCP.restart()
+                        default:
+                            print("oops")
+                        }
+                    }
                     
                 }
+                
+                
+                
+                
             }
         }
     
@@ -309,7 +339,7 @@ extension TCPHandler{
         serverAddr = addr
         serverPort = port
         client = TCPClient(address: addr!, port: port)
-        switch client.connect(timeout: 10) {
+        switch client.connect(timeout: 2) {
           case .success:
             print("Connected!!")
 
@@ -323,6 +353,7 @@ extension TCPHandler{
             
           case .failure:
             print("Failed to Connect")
+            client.close()
 //            mainViewControllerTCP.clearTextFields()
         }
     }
