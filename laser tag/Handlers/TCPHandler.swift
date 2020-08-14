@@ -19,6 +19,7 @@ protocol TCPDelegateMain : NSObject {
     func flashScreen()
     func changeView()
     func alertVersionMismatch(serverVersion: String, clientVersion: String)
+    func alertUnableToConnectToServer()
 }
 
 protocol TCPDelegateAdmin {
@@ -354,7 +355,9 @@ extension TCPHandler{
           case .failure:
             print("Failed to Connect")
             client.close()
-//            mainViewControllerTCP.clearTextFields()
+            DispatchQueue.main.async {
+                self.mainViewControllerTCP.alertUnableToConnectToServer()
+            }
         }
     }
     

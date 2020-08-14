@@ -22,13 +22,10 @@ var NFCWrite: NFCWriteHandler!
 //var serverPortTyped = false
 class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
     
-    
-    
-    
-    
-    
     @IBOutlet var connectToGunButton: UIButton!
     @IBOutlet var connectToServerButton: UIButton!
+    @IBOutlet var writeServerInfoToTagButton: UIButton!
+    @IBOutlet var readServerAddressTagButton: UIButton!
     
     @IBOutlet var serverAddressTextField: UITextField!
     @IBOutlet var serverPortTextField: UITextField!
@@ -44,12 +41,15 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
         Players = [Player]()
         NFCRead = NFCReadHandler()
         NFCWrite = NFCWriteHandler()
-        
+                
         connectToGunButton.isEnabled = false
-        
         connectToServerButton.isEnabled = false
         serverAddressTextField.isEnabled = false
         serverPortTextField.isEnabled = false
+        readServerAddressTagButton.isEnabled = false
+        
+        serverPortTextField.delegate = self
+        serverAddressTextField.delegate = self
         
         bluetooth.mainViewController = self
         networking.mainViewControllerTCP = self
@@ -95,6 +95,19 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
         NFCWrite.createRespawnPoint()
     }
     
+    @IBAction func writeServerInfoToTagButton(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let writeServerToCardVC = mainStoryboard.instantiateViewController(identifier: "WriteServerToCard") as! WriteServerToCard
+        
+        present(writeServerToCardVC, animated: true)
+        print("presenting writeServerAddressToCard vc options")
+    }
+    
+    @IBAction func readServerAddressTagButton(_ sender: Any) {
+        NFCRead.readServerAddressTag()
+    }
+    
     func enableTextFields(){
         serverPortTextField.isEnabled = true
         serverAddressTextField.isEnabled = true
@@ -102,10 +115,17 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
     
     func enableConnectToServerButton(){
         connectToServerButton.isEnabled = true
+        readServerAddressTagButton.isEnabled = true
     }
     
     func alertVersionMismatch(serverVersion: String, clientVersion: String){
         let alert = UIAlertController(title: "Version Mismatch", message: "Client Version: \(clientVersion), Server Version: \(serverVersion)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func alertUnableToConnectToServer(){
+        let alert = UIAlertController(title: "Unable to Connect", message:"Unable to connect to server", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
@@ -157,6 +177,10 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
     
 }
 
-
-//delegate function for peripheral
-
+extension ViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}

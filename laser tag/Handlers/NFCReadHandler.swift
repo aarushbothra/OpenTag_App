@@ -19,19 +19,29 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
     
     var deathScreenNFC:  NFCDelegateDeathScreen!
     
-    var readForRefill = false
+    //0 - Read to respawn
+    //1 - read to refill
+    //2 - read respawn point
+    var readType = 0
     
     func readRespawnPoint() {
-        readForRefill = false
+        readType = 0
         readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
         readSession?.alertMessage = "Hold your phone near the respawn NFC tag"
         readSession.begin()
     }
     
     func readRefillAmmoAndHealth() {
-        readForRefill = true
+        readType = 1
         readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
         readSession?.alertMessage = "Hold your phone near the respawn NFC tag"
+        readSession.begin()
+    }
+    
+    func readServerAddressTag(){
+        readType = 2
+        readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
+        readSession?.alertMessage = "Hold your phone near the server address NFC tag"
         readSession.begin()
     }
     
@@ -49,22 +59,26 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
         print("print nfc message: \(nfcMessage)")
         
         DispatchQueue.main.async {
-            switch nfcMessage {
-            case "respawn":
-                if self.readForRefill {
-                    handleGame.respawn()
-                } else {
+            switch self.readType {
+            case 0:
+                if nfcMessage == "respawn"{
                     self.deathScreenNFC.respawn()
-                   
                 }
-                 session.invalidate()
-            case "invalid":
-                session.alertMessage = "Not a valid NFC tag"
-                session.invalidate()
+            case 1:
+                if nfcMessage == "respawn" {
+                    handleGame.respawn()
+                }
+            case 2:
+                if String(nfcMessage[..<nfcMessage.index(nfcMessage.startIndex, offsetBy: 6)]) == "addr: " {
+                    nfcMessage = nfcMessage.replacingOccurrences(of: "addr: ", with: "")
+                    let stringArray = nfcMessage.components(separatedBy: ",")
+                    networking.connectToServer(addr: stringArray[0], port: Int32(Int(stringArray[1]) ?? 1))
+                }
             default:
                 session.alertMessage = "Not a valid NFC tag"
-                session.invalidate()
             }
+            
+            session.invalidate()
         }
         
         

@@ -37,8 +37,8 @@ class PlayerSetUpVC: UIViewController, TCPDelegatePlayerSetup, BTDelegatePlayerS
         networking.playerSetupVCTCP = self
         networking.setActiveVC(VC: "playerSetup")
         bluetooth.activeVC = "playerSetup"
-        usernameTextField.delegate = self
         
+        usernameTextField.delegate = self
         gunTypePickerView.dataSource = self
         gunTypePickerView.delegate = self
         teamPickerView.dataSource = self

@@ -14,15 +14,21 @@ class NFCWriteHandler: NSObject, NFCNDEFReaderSessionDelegate {
     
     var session: NFCNDEFReaderSession!
     
-    var messageToSend = ""
+    var messageToWrite = ""
     
     func createRespawnPoint() {
         session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
         session?.alertMessage = "Hold your phone near an NFC tag to create respawn point"
         session.begin()
-        messageToSend = "respawn"
+        messageToWrite = "respawn"
     }
     
+    func createServerAddressCard(serverAddress: String, serverPort: String){
+        session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
+        session?.alertMessage = "Hold your phone near an NFC tag"
+        session.begin()
+        messageToWrite = "addr: \(serverAddress),\(serverPort)"
+    }
     
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {}
     
@@ -32,7 +38,7 @@ class NFCWriteHandler: NSObject, NFCNDEFReaderSessionDelegate {
     
     func readerSession(_ session: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
         
-        let messageToUInt8 = [UInt8](messageToSend.utf8)
+        let messageToUInt8 = [UInt8](messageToWrite.utf8)
         
         
         if tags.count > 1 {

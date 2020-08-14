@@ -30,7 +30,7 @@
                                             <action selector="connectToGunButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e4Z-GU-zbL"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.1.15" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6yU-fN-n7y">
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.1.15" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6yU-fN-n7y">
                                         <rect key="frame" x="0.0" y="60" width="127" height="34"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
@@ -85,13 +85,44 @@
                                     <action selector="createRespawnTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RSq-PC-Mru"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zkm-JE-Pki">
+                                <rect key="frame" x="233" y="114" width="122" height="48"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="0Sv-4V-04r"/>
+                                    <constraint firstAttribute="height" constant="48" id="gGz-dB-b1W"/>
+                                </constraints>
+                                <state key="normal">
+                                    <string key="title">Write Server 
+ Info To Tag</string>
+                                </state>
+                                <connections>
+                                    <action selector="writeServerInfoToTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uol-mS-1GW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hgf-LX-MjW">
+                                <rect key="frame" x="244" y="182" width="111" height="48"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Q26-Ph-iKH"/>
+                                    <constraint firstAttribute="width" constant="111" id="Rpl-u3-eNA"/>
+                                </constraints>
+                                <state key="normal" title="Read Server  Address Tag"/>
+                                <connections>
+                                    <action selector="readServerAddressTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HkF-Pb-F4F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XBH-R9-TKd" secondAttribute="trailing" constant="20" id="3jR-Hb-IIT"/>
+                            <constraint firstItem="zkm-JE-Pki" firstAttribute="top" secondItem="XBH-R9-TKd" secondAttribute="bottom" constant="20" id="6km-kU-gzN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hgf-LX-MjW" secondAttribute="trailing" constant="20" id="8bv-J1-DCr"/>
                             <constraint firstItem="tBc-YV-vJ6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="FL2-hL-Kgf"/>
                             <constraint firstItem="XBH-R9-TKd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="H2R-ng-Gct"/>
+                            <constraint firstItem="hgf-LX-MjW" firstAttribute="top" secondItem="zkm-JE-Pki" secondAttribute="bottom" constant="20" id="PkF-dK-0Nk"/>
                             <constraint firstItem="tBc-YV-vJ6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="bQ5-Gv-UBy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zkm-JE-Pki" secondAttribute="trailing" constant="20" id="iZE-Tf-EVe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -99,13 +130,15 @@
                     <connections>
                         <outlet property="connectToGunButton" destination="jJU-0o-glv" id="DCw-ik-iIT"/>
                         <outlet property="connectToServerButton" destination="etS-sJ-3DX" id="7al-Bk-yga"/>
+                        <outlet property="readServerAddressTagButton" destination="hgf-LX-MjW" id="cic-gY-2WP"/>
                         <outlet property="serverAddressTextField" destination="6yU-fN-n7y" id="Xq4-Zb-Mad"/>
                         <outlet property="serverPortTextField" destination="OKC-OG-fWO" id="BPa-jR-2vR"/>
+                        <outlet property="writeServerInfoToTagButton" destination="zkm-JE-Pki" id="K8R-eL-Vee"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="851.25" y="128.87323943661971"/>
+            <point key="canvasLocation" x="850.39999999999998" y="128.18590704647679"/>
         </scene>
         <!--Player Waiting View Controller-->
         <scene sceneID="aGU-Tj-Yu7">
@@ -161,6 +194,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7o-ar-x6v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1786.875" y="445.77464788732397"/>
+        </scene>
+        <!--Write Server To Card-->
+        <scene sceneID="zfb-D0-ScB">
+            <objects>
+                <viewController storyboardIdentifier="WriteServerToCard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T1K-WU-PzN" customClass="WriteServerToCard" customModule="OpenTag" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D0K-NB-LPb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qa8-Tf-HHE">
+                                <rect key="frame" x="124" y="20" width="127" height="114"/>
+                                <subviews>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Server Address" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cax-5h-0rn">
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Server Port" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2U-zg-ogG">
+                                        <rect key="frame" x="0.0" y="42" width="127" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpa-xK-dUk">
+                                        <rect key="frame" x="0.0" y="84" width="127" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Write to Card"/>
+                                        <connections>
+                                            <action selector="writeToCardButton:" destination="T1K-WU-PzN" eventType="touchUpInside" id="kQK-UO-xVj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qa8-Tf-HHE" firstAttribute="top" secondItem="7ku-Wd-gtI" secondAttribute="top" constant="20" id="KgI-Dg-nLJ"/>
+                            <constraint firstItem="qa8-Tf-HHE" firstAttribute="centerX" secondItem="D0K-NB-LPb" secondAttribute="centerX" id="nFW-18-a0m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7ku-Wd-gtI"/>
+                    </view>
+                    <connections>
+                        <outlet property="serverAddressNFCTextField" destination="cax-5h-0rn" id="Ksb-RT-3Nn"/>
+                        <outlet property="serverPortNFCTextField" destination="b2U-zg-ogG" id="uIi-by-pux"/>
+                        <outlet property="writeToCardButton" destination="cpa-xK-dUk" id="zZK-v3-Vke"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tD1-3D-7uA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="848.79999999999995" y="-564.46776611694156"/>
         </scene>
         <!--Admin Config View Controller-->
         <scene sceneID="9Wk-le-qum">

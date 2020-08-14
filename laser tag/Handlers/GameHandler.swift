@@ -110,10 +110,10 @@ class GameHandler {
         return ""
     }
     
-    
+    // handles respawning as well as refilling ammo and health
     func respawn() {
         playerSelf.health = 100
-        playerSelf.totalAmmo = 255
+        playerSelf.totalAmmo = Game.ammo
         gameViewController.setHealthBar()
         isDead = false
         handleReload()
