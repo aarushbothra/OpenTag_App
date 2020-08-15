@@ -326,6 +326,22 @@ class GameHandler {
         
     }
     
+    func createInGameTableViews() {
+        if Game.teamSetting > 0 {
+            let teams = createTeams()
+            
+            gameViewController.updateTableView(teamsSorted: teams.sorted(by: {$0.score > $1.score}), playersInYourTeam: self.findPlayersInYourTeam())
+            gameViewController.updateKillsLabel()
+            gameViewController.updateDeathsLabel()
+            
+        } else {
+            gameViewController.updateTableView(playersSorted: Players.sorted(by: {$0.kills > $1.kills}))
+            gameViewController.updateKillsLabel()
+            gameViewController.updateDeathsLabel()
+            
+        }
+    }
+    
     func findPlayersInYourTeam() -> [Player]{
         var team = [Player]()
         for player in Players {

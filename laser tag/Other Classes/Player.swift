@@ -14,20 +14,22 @@ class Player{
     var gunType:Int
     var gunID:Int
     var isSelf: Bool
-    
     var kills = 0
     var deaths = 0
+    
     var health = 100
     var totalAmmo = Game.ammo
     var ammoInGun: Int!
     
-    init(username: String, team: Int, gunType: Int, gunID: Int, isSelf: Bool) {
+    init(username: String, team: Int, gunType: Int, gunID: Int, isSelf: Bool, kills: Int, deaths: Int) {
         print("player created")
         self.username = username
         self.team = team
         self.gunType = gunType
         self.gunID = gunID
         self.isSelf = isSelf
+        self.kills = kills
+        self.deaths = deaths
     }
     
     

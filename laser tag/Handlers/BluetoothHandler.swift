@@ -166,7 +166,7 @@ extension BluetoothHandler: CBCentralManagerDelegate {
     
     //function called after manager is connected to gun
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("Connected!")
+        print("Connected to gun!")
         laserTagGun.discoverServices([gunServiceRecoilGunUUID])
         //gunConnected = true
         print("connect to server enabled")

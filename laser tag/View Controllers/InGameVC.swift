@@ -31,9 +31,9 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
     
     var isLowHealth = false
     
-    var teamsSorted = handleGame.createTeams()
+    var teamsSorted: [Team]!
     var playersInYourTeam: [Player]!
-    var playersSorted = Players
+    var playersSorted: [Player]!
     
     
     override func viewDidLoad() {
@@ -51,9 +51,7 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
         bluetooth.inGameVC = self
         networking.inGameVCTCP = self
         
-        if Game.teamSetting > 0 {
-            playersInYourTeam = handleGame.findPlayersInYourTeam()
-        }
+        handleGame.createInGameTableViews()
         
         healthBar.centerYAnchor.constraint(equalTo: healthBarView.centerYAnchor).isActive = true
         healthBar.transform = healthBar.transform.scaledBy(x: 1, y: 10)

@@ -67,8 +67,8 @@ class TCPHandler: NSObject{
     
     var gameStarted = false
     
-    //version 1.0
-    var version = [Int(1), Int(0)]
+    //version 1.1
+    var version = [Int(1), Int(1)]
     
     func findPlayerByGunID(gunID: Int) -> Player{
         for player in Players{
@@ -200,7 +200,7 @@ class TCPHandler: NSObject{
                 if bluetooth.gunID == UInt8(serverMessage[13]){
                     isSelf = true
                 }
-                Players.append(Player(username: username!, team: serverMessage[11], gunType: serverMessage[12], gunID: serverMessage[13], isSelf: isSelf))
+                Players.append(Player(username: username!, team: serverMessage[11], gunType: serverMessage[12], gunID: serverMessage[13], isSelf: isSelf, kills: serverMessage[14], deaths: serverMessage[15]))
                 
                 let playerAdded = Players[Players.count - 1]
                 switch serverMessage[12] {
@@ -220,6 +220,13 @@ class TCPHandler: NSObject{
                     DispatchQueue.main.async {
                         self.lobbyVCTCP.refreshCV()
                     }
+                }
+                
+                if activeVC == "inGame" {
+                    DispatchQueue.main.async {
+                        handleGame.createInGameTableViews()
+                    }
+                    
                 }
             case 4://remove player disconnected from server
                 for x in 0..<Players.count{
@@ -342,7 +349,7 @@ extension TCPHandler{
         client = TCPClient(address: addr!, port: port)
         switch client.connect(timeout: 2) {
           case .success:
-            print("Connected!!")
+            print("Connected to server!!")
 
             DispatchQueue.global(qos: .background).async {
                 self.readServerMessage = true
@@ -353,7 +360,7 @@ extension TCPHandler{
              
             
           case .failure:
-            print("Failed to Connect")
+            print("Failed to connect to server")
             client.close()
             DispatchQueue.main.async {
                 self.mainViewControllerTCP.alertUnableToConnectToServer()
