@@ -274,40 +274,63 @@ extension InGameVC {
         NSLayoutConstraint.activate(constraints)
         reloadView.backgroundColor = UIColor.systemGray2
         
-        let reloadProgress = UIProgressView()
-        reloadProgress.translatesAutoresizingMaskIntoConstraints = false
-        reloadView.addSubview(reloadProgress)
-        
-        let reloadProgressContraints:[NSLayoutConstraint] = [
-            reloadProgress.trailingAnchor.constraint(equalTo: reloadView.trailingAnchor, constant: -10),
-            reloadProgress.centerYAnchor.constraint(equalTo: reloadView.centerYAnchor),
-            reloadProgress.centerXAnchor.constraint(equalTo: reloadView.centerXAnchor),
-            reloadProgress.leadingAnchor.constraint(equalTo: reloadView.leadingAnchor, constant: 10)
-         
-        ]
-        NSLayoutConstraint.activate(reloadProgressContraints)
-        reloadProgress.transform = reloadProgress.transform.scaledBy(x: 1, y: 10)
-        reloadProgress.progressTintColor = UIColor.systemBlue
-        reloadProgress.setProgress(0, animated: false)
-        
-        //reload time (seconds) = totalUnitCount / 100
-        let progress = Progress(totalUnitCount: 150)
-        
-        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true){ (timer) in
+        if handleGame.playerSelf.totalAmmo > 0 || handleGame.playerSelf.ammoInGun > 0 {
+            let reloadProgress = UIProgressView()
+            reloadProgress.translatesAutoresizingMaskIntoConstraints = false
+            reloadView.addSubview(reloadProgress)
             
-            guard progress.isFinished == false else {
-                timer.invalidate()
-                reloadView.removeFromSuperview()
-                handleGame.handleReload()
-                return
+            let reloadProgressContraints:[NSLayoutConstraint] = [
+                reloadProgress.trailingAnchor.constraint(equalTo: reloadView.trailingAnchor, constant: -10),
+                reloadProgress.centerYAnchor.constraint(equalTo: reloadView.centerYAnchor),
+                reloadProgress.centerXAnchor.constraint(equalTo: reloadView.centerXAnchor),
+                reloadProgress.leadingAnchor.constraint(equalTo: reloadView.leadingAnchor, constant: 10)
+             
+            ]
+            NSLayoutConstraint.activate(reloadProgressContraints)
+            reloadProgress.transform = reloadProgress.transform.scaledBy(x: 1, y: 10)
+            reloadProgress.progressTintColor = UIColor.systemBlue
+            reloadProgress.setProgress(0, animated: false)
+            
+            //reload time (seconds) = totalUnitCount / 100
+            let progress = Progress(totalUnitCount: 150)
+            
+            Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true){ (timer) in
+                
+                guard progress.isFinished == false else {
+                    timer.invalidate()
+                    reloadView.removeFromSuperview()
+                    handleGame.handleReload()
+                    return
+                }
+                
+                progress.completedUnitCount += 1
+                
+                let progressFloat = Float(progress.fractionCompleted)
+                reloadProgress.setProgress(progressFloat, animated: true)
+                
             }
+        } else {
+            let noAmmoLabel = UILabel()
+            noAmmoLabel.translatesAutoresizingMaskIntoConstraints = false
+            reloadView.addSubview(noAmmoLabel)
             
-            progress.completedUnitCount += 1
+            let noAmmoLabelConstraints:[NSLayoutConstraint] = [
+                noAmmoLabel.topAnchor.constraint(equalTo: reloadView.safeAreaLayoutGuide.topAnchor),
+                noAmmoLabel.leadingAnchor.constraint(equalTo: reloadView.safeAreaLayoutGuide.leadingAnchor),
+                noAmmoLabel.trailingAnchor.constraint(equalTo: reloadView.safeAreaLayoutGuide.trailingAnchor),
+                noAmmoLabel.bottomAnchor.constraint(equalTo: reloadView.safeAreaLayoutGuide.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(noAmmoLabelConstraints)
             
-            let progressFloat = Float(progress.fractionCompleted)
-            reloadProgress.setProgress(progressFloat, animated: true)
-            
+            noAmmoLabel.text = "Out of Ammo"
+            noAmmoLabel.adjustsFontSizeToFitWidth = true
+            noAmmoLabel.textAlignment = .center
+            noAmmoLabel.textColor = UIColor.systemBlue
+            noAmmoLabel.font.withSize(40)
+            fadeViewOut(view: reloadView, delay: 1)
         }
+        
+        
         
     }
 }

@@ -32,6 +32,8 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
         
      override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
+
         //initializing manager
         print("disabling buttons")
         self.navigationController?.isNavigationBarHidden = true

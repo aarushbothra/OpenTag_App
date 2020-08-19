@@ -39,6 +39,16 @@ class GameHandler {
     
     var isDead = false
     
+    var sniperDamage = 35
+    var burstDamage = 8
+    var fullAutoDamage = 8
+    var singleShotDamage = 28
+    
+    var sniperAmmo = 12
+    var burstAmmo = 40
+    var fullAutoAmmo = 30
+    var singleShotAmmo = 10
+    
     init() {
         for player in Players {
             if player.isSelf {
@@ -132,15 +142,15 @@ class GameHandler {
             if Game.teamSetting == 0 {
                 switch playerShooting.gunType {
                 case 0://sniper
-                    playerSelf.health -= 35
+                    playerSelf.health -= sniperDamage
                 case 1://burst
-                    playerSelf.health -= 4
+                    playerSelf.health -= burstDamage
                 case 2://full auto
-                    playerSelf.health -= 4
-                case 3:
-                    playerSelf.health -= 28
+                    playerSelf.health -= fullAutoDamage
+                case 3://single shot
+                    playerSelf.health -= singleShotDamage
                 default:
-                    playerSelf.health -= 4
+                    break;
                 }
                 
                 
@@ -151,7 +161,7 @@ class GameHandler {
                     bluetooth.setReload(gunID: playerSelf.gunID)
                     isDead = true
                     gameViewController.setHealthBar()
-                  //  gameViewController.switchToDeathScreen(string: "Killed by \(playerShooting.username)")
+                    //  gameViewController.switchToDeathScreen(string: "Killed by \(playerShooting.username)")
                     //bluetooth.syncGun()
                     
                 } else {
@@ -164,15 +174,15 @@ class GameHandler {
                 if playerShooting.team != playerSelf.team {
                     switch playerShooting.gunType {
                     case 0://sniper
-                        playerSelf.health -= 35
+                        playerSelf.health -= sniperDamage
                     case 1://burst
-                        playerSelf.health -= 4
+                        playerSelf.health -= burstDamage
                     case 2://full auto
-                        playerSelf.health -= 4
+                        playerSelf.health -= fullAutoDamage
                     case 3://single shot
-                        playerSelf.health -= 14
+                        playerSelf.health -= singleShotDamage
                     default:
-                        playerSelf.health -= 4
+                        break;
                     }
                     
                     
@@ -182,7 +192,7 @@ class GameHandler {
                         bluetooth.syncGun()
                         bluetooth.setReload(gunID: playerSelf.gunID)
                         gameViewController.setHealthBar()
-                       // gameViewController.switchToDeathScreen(string: "Killed by \(playerShooting.username)")
+                        // gameViewController.switchToDeathScreen(string: "Killed by \(playerShooting.username)")
                         
                         isDead = true
                         //bluetooth.syncGun()
@@ -203,55 +213,70 @@ class GameHandler {
     
     func handleReload(){
         
-        var ammo = 0
-        
-        
         if Game.ammo > 0 {
             switch playerSelf.gunType {
             case 0: //sniper
-                playerSelf.totalAmmo -= (12 - playerSelf.ammoInGun)
-                playerSelf.ammoInGun = 12
-                ammo = 12
+                let maxAmmoToAdd = sniperAmmo - playerSelf.ammoInGun
+                if playerSelf.totalAmmo <= maxAmmoToAdd {
+                    playerSelf.ammoInGun = playerSelf.ammoInGun + playerSelf.totalAmmo
+                    playerSelf.totalAmmo = 0
+                } else {
+                    playerSelf.totalAmmo -= (sniperAmmo - playerSelf.ammoInGun)
+                    playerSelf.ammoInGun = sniperAmmo
+                }
+                
             case 1://burst
-                playerSelf.totalAmmo -= (40 - playerSelf.ammoInGun)
-                playerSelf.ammoInGun = 40
-                ammo = 40
+                let maxAmmoToAdd = burstAmmo - playerSelf.ammoInGun
+                if playerSelf.totalAmmo <= maxAmmoToAdd {
+                    playerSelf.ammoInGun = playerSelf.ammoInGun + playerSelf.totalAmmo
+                    playerSelf.totalAmmo = 0
+                } else {
+                    playerSelf.totalAmmo -= (burstAmmo - playerSelf.ammoInGun)
+                    playerSelf.ammoInGun = burstAmmo
+                }
             case 2://full auto
-                playerSelf.totalAmmo -= (30 - playerSelf.ammoInGun)
-                playerSelf.ammoInGun = 30
-                ammo = 30
+                let maxAmmoToAdd = fullAutoAmmo - playerSelf.ammoInGun
+                if playerSelf.totalAmmo <= maxAmmoToAdd {
+                    playerSelf.ammoInGun = playerSelf.ammoInGun + playerSelf.totalAmmo
+                    playerSelf.totalAmmo = 0
+                } else {
+                    playerSelf.totalAmmo -= (fullAutoAmmo - playerSelf.ammoInGun)
+                    playerSelf.ammoInGun = fullAutoAmmo
+                }
             case 3://single shot
-                playerSelf.totalAmmo -= (10 - playerSelf.ammoInGun)
-                playerSelf.ammoInGun = 10
-                ammo = 10
+                let maxAmmoToAdd = singleShotAmmo - playerSelf.ammoInGun
+                if playerSelf.totalAmmo <= maxAmmoToAdd {
+                    playerSelf.ammoInGun = playerSelf.ammoInGun + playerSelf.totalAmmo
+                    playerSelf.totalAmmo = 0
+                } else {
+                    playerSelf.totalAmmo -= (singleShotAmmo - playerSelf.ammoInGun)
+                    playerSelf.ammoInGun = singleShotAmmo
+                }
+                
             default:
                 break
             }
             
-            gameViewController.setAmmoInGunLabel(string: String(ammo))
+            gameViewController.setAmmoInGunLabel(string: String(playerSelf.ammoInGun))
             gameViewController.setTotalAmmoLabel(string: String(playerSelf.totalAmmo))
         } else {
             switch playerSelf.gunType {
             case 0: //sniper
-                playerSelf.ammoInGun = 12
-                ammo = 12
+                playerSelf.ammoInGun = sniperAmmo
             case 1://burst
-                playerSelf.ammoInGun = 40
-                ammo = 40
+                playerSelf.ammoInGun = burstAmmo
             case 2://full auto
-                playerSelf.ammoInGun = 12
-                ammo = 30
+                playerSelf.ammoInGun = fullAutoAmmo
             case 3://single shot
-                playerSelf.ammoInGun = 12
-                ammo = 10
+                playerSelf.ammoInGun = singleShotAmmo
             default:
                 break
             }
             
-            gameViewController.setAmmoInGunLabel(string: String(ammo))
+            gameViewController.setAmmoInGunLabel(string: String(playerSelf.ammoInGun))
             gameViewController.setTotalAmmoLabel(string: "Unlimited")
         }
-        bluetooth.unsetReload(ammo: ammo, gunID: playerSelf.gunID)
+        bluetooth.unsetReload(ammo: playerSelf.ammoInGun, gunID: playerSelf.gunID)
     }
     
     

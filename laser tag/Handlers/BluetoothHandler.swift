@@ -174,7 +174,6 @@ extension BluetoothHandler: CBCentralManagerDelegate {
         mainViewController.enableConnectToServerButton()
     }
     
-    //prevents gun from firing
     func syncGun() {
         print("")
         print("---------------------------------SYNCING----------------------------------")
@@ -215,6 +214,7 @@ extension BluetoothHandler: CBCentralManagerDelegate {
         } else {
            // print("location outdoor selected")
             bytes[5] = 255
+            bytes[6] = 200 // adds cone shape to bullet spread
         }
         
         bytes[10] = 2
@@ -232,6 +232,7 @@ extension BluetoothHandler: CBCentralManagerDelegate {
             bytes[4] = 1
         case 3://single shot
             bytes[3] = 254
+            bytes[6] = 0 //removes cone shape from bullet spread for single shot
         default:
             bytes[3] = 254
             bytes[4] = 1

@@ -19,6 +19,7 @@
 		B1F6A1AC4D129E3205A18B594578EC5F /* Pods-laser tag-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8017ED88C73058F1234FA4094B950 /* Pods-laser tag-dummy.m */; };
 		B8CF82B90077904D90F4180A90399BA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		D303472E6599B444367CC153A4F2DFDC /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A0C37D8C261B03A7CD534DFEC667C /* Socket.swift */; };
+		E6224DCE24E8EE04009FA3E5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6224DCD24E8EE04009FA3E5 /* NotificationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,9 @@
 		ABD731DA8B475FB483896D2A3C5DAFA6 /* Pods-laser tag-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-laser tag-frameworks.sh"; sourceTree = "<group>"; };
 		D8387336FD6A3351C9141135985C8B43 /* Pods-laser tag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-laser tag.release.xcconfig"; sourceTree = "<group>"; };
 		DE21811D74922E72AD8AB579C8FBE745 /* Pods_laser_tag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_laser_tag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6224DCB24E8EE04009FA3E5 /* zmNinjaNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = zmNinjaNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6224DCD24E8EE04009FA3E5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		E6224DCF24E8EE04009FA3E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC78B90EF3228FCEF00E1C114F851940 /* SwiftSocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftSocket.release.xcconfig; sourceTree = "<group>"; };
 		F627F884620D46A7D231700A05C58816 /* Pods-laser tag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-laser tag.debug.xcconfig"; sourceTree = "<group>"; };
 		FB9BB5CE053BFEF2F23AF9B34D658CE4 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Result.swift; sourceTree = "<group>"; };
@@ -74,6 +78,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8CF82B90077904D90F4180A90399BA1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6224DC824E8EE04009FA3E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				E6224DCC24E8EE04009FA3E5 /* zmNinjaNotification */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				D5EC352109CA1F9CC0CB3BCA4B89FE57 /* Pods */,
 				D23AF83903D43B65F37BBA762EF839E5 /* Products */,
@@ -158,6 +170,7 @@
 			children = (
 				DE21811D74922E72AD8AB579C8FBE745 /* Pods_laser_tag.framework */,
 				3A59C9FE3D98CF2152E03CFA05A85BFC /* SwiftSocket.framework */,
+				E6224DCB24E8EE04009FA3E5 /* zmNinjaNotification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +189,15 @@
 				52000A72BB861E8F559E18A3821FCEAD /* Pods-laser tag */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E6224DCC24E8EE04009FA3E5 /* zmNinjaNotification */ = {
+			isa = PBXGroup;
+			children = (
+				E6224DCD24E8EE04009FA3E5 /* NotificationService.swift */,
+				E6224DCF24E8EE04009FA3E5 /* Info.plist */,
+			);
+			path = zmNinjaNotification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,14 +259,36 @@
 			productReference = DE21811D74922E72AD8AB579C8FBE745 /* Pods_laser_tag.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		E6224DCA24E8EE04009FA3E5 /* zmNinjaNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6224DD224E8EE04009FA3E5 /* Build configuration list for PBXNativeTarget "zmNinjaNotification" */;
+			buildPhases = (
+				E6224DC724E8EE04009FA3E5 /* Sources */,
+				E6224DC824E8EE04009FA3E5 /* Frameworks */,
+				E6224DC924E8EE04009FA3E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = zmNinjaNotification;
+			productName = zmNinjaNotification;
+			productReference = E6224DCB24E8EE04009FA3E5 /* zmNinjaNotification.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					E6224DCA24E8EE04009FA3E5 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -261,6 +305,7 @@
 			targets = (
 				BBA7FF56663B1B0CA1CE717F5DC7CB34 /* Pods-laser tag */,
 				2098E99F31975F5C89523CC6EB58B9CC /* SwiftSocket */,
+				E6224DCA24E8EE04009FA3E5 /* zmNinjaNotification */,
 			);
 		};
 /* End PBXProject section */
@@ -274,6 +319,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B90FADEA71E7F90096B2636C5282332B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6224DC924E8EE04009FA3E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -302,6 +354,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1F6A1AC4D129E3205A18B594578EC5F /* Pods-laser tag-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6224DC724E8EE04009FA3E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6224DCE24E8EE04009FA3E5 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +647,53 @@
 			};
 			name = Debug;
 		};
+		E6224DD024E8EE04009FA3E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TTDD557S8H;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = zmNinjaNotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aarushbohra.zmNinjaNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E6224DD124E8EE04009FA3E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TTDD557S8H;
+				INFOPLIST_FILE = zmNinjaNotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aarushbohra.zmNinjaNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -604,6 +711,15 @@
 			buildConfigurations = (
 				916E0404255105F480DC4950B7625F7A /* Debug */,
 				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6224DD224E8EE04009FA3E5 /* Build configuration list for PBXNativeTarget "zmNinjaNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6224DD024E8EE04009FA3E5 /* Debug */,
+				E6224DD124E8EE04009FA3E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
