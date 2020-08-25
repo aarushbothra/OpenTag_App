@@ -16,25 +16,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="tBc-YV-vJ6">
-                                <rect key="frame" x="30" y="124" width="127" height="218"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJU-0o-glv">
+                                <rect key="frame" x="104.5" y="308.5" width="166" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="166" id="3W7-Q0-TNv"/>
+                                    <constraint firstAttribute="height" constant="50" id="iLJ-jS-D5b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Connect to Gun"/>
+                                <connections>
+                                    <action selector="connectToGunButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e4Z-GU-zbL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBH-R9-TKd">
+                                <rect key="frame" x="104" y="64" width="167" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="167" id="haw-wY-qG9"/>
+                                </constraints>
+                                <state key="normal" title="Create Respawn Tag"/>
+                                <connections>
+                                    <action selector="createRespawnTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RSq-PC-Mru"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="II7-Bq-WtD">
+                                <rect key="frame" x="104.5" y="208" width="166" height="251"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJU-0o-glv">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zkm-JE-Pki">
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="48"/>
                                         <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="jh4-ma-I7j"/>
+                                            <constraint firstAttribute="height" constant="48" id="gGz-dB-b1W"/>
                                         </constraints>
-                                        <state key="normal" title="Connect to Gun"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal">
+                                            <string key="title">Write Server 
+ Info To Tag</string>
+                                        </state>
                                         <connections>
-                                            <action selector="connectToGunButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e4Z-GU-zbL"/>
+                                            <action selector="writeServerInfoToTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uol-mS-1GW"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.1.15" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6yU-fN-n7y">
-                                        <rect key="frame" x="0.0" y="60" width="127" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hgf-LX-MjW">
+                                        <rect key="frame" x="0.0" y="62" width="166" height="48"/>
+                                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Q26-Ph-iKH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Read Server  Address Tag"/>
+                                        <connections>
+                                            <action selector="readServerAddressTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HkF-Pb-F4F"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.1.15" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6yU-fN-n7y">
+                                        <rect key="frame" x="0.0" y="124" width="166" height="34"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="127" id="G1Z-a3-hEC"/>
+                                            <constraint firstAttribute="width" constant="166" id="G1Z-a3-hEC"/>
                                             <constraint firstAttribute="height" constant="34" id="rhc-Fo-gyL"/>
                                         </constraints>
                                         <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -45,11 +85,10 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1234" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OKC-OG-fWO">
-                                        <rect key="frame" x="0.0" y="124" width="101" height="34"/>
+                                        <rect key="frame" x="0.0" y="172" width="166" height="34"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="1Gw-3t-Mah"/>
-                                            <constraint firstAttribute="width" constant="101" id="lox-C0-HGS"/>
                                         </constraints>
                                         <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -59,70 +98,41 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etS-sJ-3DX">
-                                        <rect key="frame" x="0.0" y="188" width="70" height="30"/>
+                                        <rect key="frame" x="0.0" y="220" width="166" height="31"/>
                                         <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="vzI-yi-AxR"/>
+                                            <constraint firstAttribute="height" constant="31" id="5dZ-XI-9jz"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Connect"/>
                                         <connections>
                                             <action selector="connectToServerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dPV-4F-sAC"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="tBc-YV-vJ6" secondAttribute="height" multiplier="127:218" id="Nl1-gC-1Cm"/>
-                                </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBH-R9-TKd">
-                                <rect key="frame" x="188" y="64" width="167" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T49-MN-gLw">
+                                <rect key="frame" x="96" y="617" width="183" height="30"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="167" id="haw-wY-qG9"/>
+                                    <constraint firstAttribute="width" constant="183" id="MgF-cU-BPC"/>
                                 </constraints>
-                                <state key="normal" title="Create Respawn Tag"/>
+                                <state key="normal" title="Get the server software"/>
                                 <connections>
-                                    <action selector="createRespawnTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RSq-PC-Mru"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zkm-JE-Pki">
-                                <rect key="frame" x="233" y="114" width="122" height="48"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="0Sv-4V-04r"/>
-                                    <constraint firstAttribute="height" constant="48" id="gGz-dB-b1W"/>
-                                </constraints>
-                                <state key="normal">
-                                    <string key="title">Write Server 
- Info To Tag</string>
-                                </state>
-                                <connections>
-                                    <action selector="writeServerInfoToTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uol-mS-1GW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hgf-LX-MjW">
-                                <rect key="frame" x="244" y="182" width="111" height="48"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="Q26-Ph-iKH"/>
-                                    <constraint firstAttribute="width" constant="111" id="Rpl-u3-eNA"/>
-                                </constraints>
-                                <state key="normal" title="Read Server  Address Tag"/>
-                                <connections>
-                                    <action selector="readServerAddressTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HkF-Pb-F4F"/>
+                                    <action selector="getServerSoftwareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0YX-79-c8U"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XBH-R9-TKd" secondAttribute="trailing" constant="20" id="3jR-Hb-IIT"/>
-                            <constraint firstItem="zkm-JE-Pki" firstAttribute="top" secondItem="XBH-R9-TKd" secondAttribute="bottom" constant="20" id="6km-kU-gzN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hgf-LX-MjW" secondAttribute="trailing" constant="20" id="8bv-J1-DCr"/>
-                            <constraint firstItem="tBc-YV-vJ6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="FL2-hL-Kgf"/>
+                            <constraint firstItem="jJU-0o-glv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0RC-vo-rBS"/>
+                            <constraint firstItem="II7-Bq-WtD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EHg-uO-ZKG"/>
                             <constraint firstItem="XBH-R9-TKd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="H2R-ng-Gct"/>
-                            <constraint firstItem="hgf-LX-MjW" firstAttribute="top" secondItem="zkm-JE-Pki" secondAttribute="bottom" constant="20" id="PkF-dK-0Nk"/>
-                            <constraint firstItem="tBc-YV-vJ6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="bQ5-Gv-UBy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zkm-JE-Pki" secondAttribute="trailing" constant="20" id="iZE-Tf-EVe"/>
+                            <constraint firstItem="T49-MN-gLw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zb6-0H-cG4"/>
+                            <constraint firstItem="XBH-R9-TKd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bxH-kg-QCs"/>
+                            <constraint firstItem="jJU-0o-glv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i8A-7y-c6F"/>
+                            <constraint firstItem="II7-Bq-WtD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mHx-mm-49k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="T49-MN-gLw" secondAttribute="bottom" constant="20" id="sdS-jP-yiq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -130,8 +140,10 @@
                     <connections>
                         <outlet property="connectToGunButton" destination="jJU-0o-glv" id="DCw-ik-iIT"/>
                         <outlet property="connectToServerButton" destination="etS-sJ-3DX" id="7al-Bk-yga"/>
+                        <outlet property="getServerSoftwareButton" destination="T49-MN-gLw" id="Yrg-Tj-7RG"/>
                         <outlet property="readServerAddressTagButton" destination="hgf-LX-MjW" id="cic-gY-2WP"/>
                         <outlet property="serverAddressTextField" destination="6yU-fN-n7y" id="Xq4-Zb-Mad"/>
+                        <outlet property="serverConnectStackView" destination="II7-Bq-WtD" id="2Mv-i6-DcM"/>
                         <outlet property="serverPortTextField" destination="OKC-OG-fWO" id="BPa-jR-2vR"/>
                         <outlet property="writeServerInfoToTagButton" destination="zkm-JE-Pki" id="K8R-eL-Vee"/>
                     </connections>
@@ -539,7 +551,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vva-fn-IiE">
-                                <rect key="frame" x="20" y="20" width="335" height="527"/>
+                                <rect key="frame" x="20" y="81" width="335" height="466"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="E5F-Ep-ahq">
                                     <size key="itemSize" width="280" height="414"/>
@@ -548,8 +560,8 @@
                                     <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="Cell" translatesAutoresizingMaskIntoConstraints="NO" id="Ssy-tL-F03" userLabel="Cell" customClass="CollectionViewCellLobby" customModule="OpenTag">
-                                        <rect key="frame" x="5" y="56.5" width="280" height="414"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" translatesAutoresizingMaskIntoConstraints="NO" id="Ssy-tL-F03" userLabel="Cell" customClass="CollectionViewCellLobby" customModule="OpenTag">
+                                        <rect key="frame" x="5" y="26" width="280" height="414"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0Sy-vf-Tq3">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="414"/>
@@ -632,6 +644,34 @@
                                     <action selector="startButton:" destination="4GL-SW-9Ma" eventType="touchUpInside" id="y1a-KN-4Zn"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="0bz-mq-GuB">
+                                <rect key="frame" x="20" y="10" width="335" height="51"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5V-vE-E9z">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="51"/>
+                                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="MLQ-MW-uLV"/>
+                                            <constraint firstAttribute="height" constant="51" id="f87-Ey-aAm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Create Respawn Tag"/>
+                                        <connections>
+                                            <action selector="createRespawnTagButton:" destination="4GL-SW-9Ma" eventType="touchUpInside" id="ca9-Rc-z6a"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make as many respawn tags as needed. Respawn tags are not team specific." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl4-dM-269">
+                                        <rect key="frame" x="157" y="0.0" width="178" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="Kc0-Xo-mXh"/>
+                                            <constraint firstAttribute="width" constant="178" id="Kf5-VM-u51"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -639,14 +679,18 @@
                             <constraint firstAttribute="bottomMargin" secondItem="bP3-2V-l0G" secondAttribute="bottom" constant="20" id="7s6-dJ-eG8"/>
                             <constraint firstItem="VAs-SE-yxB" firstAttribute="bottom" secondItem="Nga-Pv-9PR" secondAttribute="bottom" constant="20" id="DAg-vi-7Zl"/>
                             <constraint firstItem="Vva-fn-IiE" firstAttribute="leading" secondItem="VAs-SE-yxB" secondAttribute="leading" constant="20" id="DvP-u1-hA1"/>
+                            <constraint firstItem="0bz-mq-GuB" firstAttribute="leading" secondItem="VAs-SE-yxB" secondAttribute="leading" constant="20" id="Npi-2b-tOX"/>
                             <constraint firstItem="Nga-Pv-9PR" firstAttribute="leading" secondItem="VAs-SE-yxB" secondAttribute="leading" constant="20" id="RaW-YK-FW3"/>
+                            <constraint firstItem="VAs-SE-yxB" firstAttribute="trailing" secondItem="0bz-mq-GuB" secondAttribute="trailing" constant="20" id="eYY-5W-fiN"/>
                             <constraint firstItem="VAs-SE-yxB" firstAttribute="trailing" secondItem="bP3-2V-l0G" secondAttribute="trailing" constant="20" id="etm-9i-bYV"/>
-                            <constraint firstItem="Vva-fn-IiE" firstAttribute="top" secondItem="VAs-SE-yxB" secondAttribute="top" constant="20" id="hCK-ct-aiC"/>
                             <constraint firstItem="Nga-Pv-9PR" firstAttribute="top" secondItem="Vva-fn-IiE" secondAttribute="bottom" constant="20" id="heI-q7-1wv"/>
+                            <constraint firstItem="Vva-fn-IiE" firstAttribute="top" secondItem="0bz-mq-GuB" secondAttribute="bottom" constant="20" id="l2Y-id-jLb"/>
+                            <constraint firstItem="0bz-mq-GuB" firstAttribute="top" secondItem="VAs-SE-yxB" secondAttribute="top" constant="10" id="qFH-fG-DJP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VAs-SE-yxB"/>
                     </view>
                     <connections>
+                        <outlet property="createRespawnTagButton" destination="x5V-vE-E9z" id="Cxj-2A-vbA"/>
                         <outlet property="disconnectButton" destination="zva-ti-KzB" id="LeD-Uc-9IZ"/>
                         <outlet property="lobbyCV" destination="Vva-fn-IiE" id="VQk-iM-4ii"/>
                         <outlet property="restartServerButton" destination="jqb-0H-rrt" id="JFC-BE-6uH"/>
@@ -655,7 +699,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHx-a8-Otp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3614.4927536231885" y="127.23214285714285"/>
+            <point key="canvasLocation" x="3613.5999999999999" y="126.38680659670166"/>
         </scene>
         <!--In GameVC-->
         <scene sceneID="d0w-Rx-LZH">

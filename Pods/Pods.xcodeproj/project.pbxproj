@@ -19,7 +19,6 @@
 		B1F6A1AC4D129E3205A18B594578EC5F /* Pods-laser tag-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8017ED88C73058F1234FA4094B950 /* Pods-laser tag-dummy.m */; };
 		B8CF82B90077904D90F4180A90399BA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		D303472E6599B444367CC153A4F2DFDC /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A0C37D8C261B03A7CD534DFEC667C /* Socket.swift */; };
-		E6224DCE24E8EE04009FA3E5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6224DCD24E8EE04009FA3E5 /* NotificationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +55,6 @@
 		D8387336FD6A3351C9141135985C8B43 /* Pods-laser tag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-laser tag.release.xcconfig"; sourceTree = "<group>"; };
 		DE21811D74922E72AD8AB579C8FBE745 /* Pods_laser_tag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_laser_tag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6224DCB24E8EE04009FA3E5 /* zmNinjaNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = zmNinjaNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6224DCD24E8EE04009FA3E5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		E6224DCF24E8EE04009FA3E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC78B90EF3228FCEF00E1C114F851940 /* SwiftSocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftSocket.release.xcconfig; sourceTree = "<group>"; };
 		F627F884620D46A7D231700A05C58816 /* Pods-laser tag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-laser tag.debug.xcconfig"; sourceTree = "<group>"; };
 		FB9BB5CE053BFEF2F23AF9B34D658CE4 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Result.swift; sourceTree = "<group>"; };
@@ -149,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				E6224DCC24E8EE04009FA3E5 /* zmNinjaNotification */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				D5EC352109CA1F9CC0CB3BCA4B89FE57 /* Pods */,
 				D23AF83903D43B65F37BBA762EF839E5 /* Products */,
@@ -189,15 +185,6 @@
 				52000A72BB861E8F559E18A3821FCEAD /* Pods-laser tag */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		E6224DCC24E8EE04009FA3E5 /* zmNinjaNotification */ = {
-			isa = PBXGroup;
-			children = (
-				E6224DCD24E8EE04009FA3E5 /* NotificationService.swift */,
-				E6224DCF24E8EE04009FA3E5 /* Info.plist */,
-			);
-			path = zmNinjaNotification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,7 +348,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6224DCE24E8EE04009FA3E5 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

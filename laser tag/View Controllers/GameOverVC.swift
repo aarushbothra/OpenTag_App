@@ -17,12 +17,16 @@ class GameOverVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        networking.setActiveVC(VC: "gameOverVC")
+        bluetooth.activeVC = "gameOverVC"
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
     @IBAction func newGameButton(_ sender: Any) {
+        networking.restartServer()
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         let mainViewController = mainStoryboard.instantiateViewController(identifier: "MainVC") as! ViewController

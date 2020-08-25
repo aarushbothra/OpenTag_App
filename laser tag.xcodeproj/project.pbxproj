@@ -484,7 +484,7 @@
 				CODE_SIGN_ENTITLEMENTS = "laser tag/laser tag.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KG885U9N7S;
 				INFOPLIST_FILE = "laser tag/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -492,7 +492,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ab.openTag;
 				PRODUCT_NAME = OpenTag;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -511,7 +511,7 @@
 				CODE_SIGN_ENTITLEMENTS = "laser tag/laser tag.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KG885U9N7S;
 				INFOPLIST_FILE = "laser tag/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -519,7 +519,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ab.openTag;
 				PRODUCT_NAME = OpenTag;
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -15,6 +15,7 @@ class LobbyVC: UIViewController, BTDelegateLobby, TCPDelegateLobby {
     @IBOutlet var disconnectButton: UIButton!
     @IBOutlet var restartServerButton: UIButton!
     @IBOutlet var startButton: UIButton!
+    @IBOutlet var createRespawnTagButton: UIButton!
     
     let teamOptionsTotal = ["Team 1", "Team 2", "Team 3","Team 4","Team 5","Team 6","Team 7", "Team 8"]
     var collectionViewCellLabels = [String]()
@@ -99,6 +100,10 @@ class LobbyVC: UIViewController, BTDelegateLobby, TCPDelegateLobby {
         
         self.navigationController?.pushViewController(mainViewController, animated: true)
         print("switching to mainVC")
+    }
+    
+    @IBAction func createRespawnTagButton(_ sender: Any) {
+        NFCWrite.createRespawnPoint()
     }
     
     func refreshCV(){

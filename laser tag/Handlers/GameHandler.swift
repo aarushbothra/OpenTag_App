@@ -32,12 +32,13 @@ class GameHandler {
     
     var gameViewController: GameHandlerDelegate!
     
-    var timerCounter: Float = -1
+    var gameTime = Double(Game.timeLimit*60)
     var timer = Timer()
     
     var playerSelf: Player!
     
     var isDead = false
+    var sendTimeSync = true
     
     var sniperDamage = 35
     var burstDamage = 8
@@ -77,10 +78,10 @@ class GameHandler {
     
     func timerHandler() -> String {
         
-        timerCounter += 0.1
+        gameTime -= 0.1
         // print(timerCounter)
         
-        let flooredCounter = Int(floor(Float(Game.timeLimit*60) - timerCounter))
+        let flooredCounter = Int(gameTime)
         let hour = flooredCounter/3600
         
         let minute = (flooredCounter % 3600) / 60
@@ -95,7 +96,21 @@ class GameHandler {
             secondString = "0\(second)"
         }
         
-        let decisecond = String(format: "%.1f", timerCounter).components(separatedBy: ".").last!
+        let decisecond = String(format: "%.1f", gameTime).components(separatedBy: ".").last!
+        
+        
+        if ((Game.timeLimit * 60) - Int(gameTime)) % 10 == 0 && networking.isAdmin {
+            if sendTimeSync {
+                sendTimeSync = false
+                let coefficient = Int(gameTime / 255)
+                let remainder = Int(gameTime) % 255
+                print("SYNCING TIME: coefficient: \(coefficient), remainder: \(remainder), gameTime: \(gameTime) ")
+                networking.syncTime(coefficient: coefficient, remainder: Int(remainder))
+            }
+            
+        } else {
+            sendTimeSync = true
+        }
         
         if  flooredCounter >= 0 {
             //only display hour if there are more than 60 minutes and only display minutes if there are more than 60 seconds

@@ -13,8 +13,6 @@ import SwiftSocket
 
 protocol TCPDelegateMain : NSObject {
     func changeConnectToGunButtonState(to state:Bool)
-    func enableTextFields()
-    func enableConnectToServerButton()
     func clearTextFields()
     func flashScreen()
     func changeView()
@@ -67,8 +65,8 @@ class TCPHandler: NSObject{
     
     var gameStarted = false
     
-    //version 1.1
-    var version = [Int(1), Int(1)]
+    //version 1.2
+    var version = [Int(1), Int(2)]
     
     func findPlayerByGunID(gunID: Int) -> Player{
         for player in Players{
@@ -194,12 +192,14 @@ class TCPHandler: NSObject{
                     }
                    
                 }
+                
                 print("Username length: \(usernameArray.count)")
                 let username = String(bytes: usernameArray, encoding: .utf8)
                 var isSelf = false
                 if bluetooth.gunID == UInt8(serverMessage[13]){
                     isSelf = true
                 }
+                
                 Players.append(Player(username: username!, team: serverMessage[11], gunType: serverMessage[12], gunID: serverMessage[13], isSelf: isSelf, kills: serverMessage[14], deaths: serverMessage[15]))
                 
                 let playerAdded = Players[Players.count - 1]
@@ -270,6 +270,11 @@ class TCPHandler: NSObject{
                 DispatchQueue.main.async {
                     self.inGameVCTCP.gameOver()
                     bluetooth.disconnectGun()
+                }
+                
+            case 9:
+                if gameStarted {
+                    handleGame.gameTime = Double((serverMessage[1] * 255) + serverMessage[2])
                 }
                 
             case 253://version check
@@ -455,6 +460,14 @@ extension TCPHandler{
             client.send(data: byteArray)
         }
         
+    }
+    
+    func syncTime(coefficient: Int, remainder: Int) {
+        var byteArray = [UInt8](repeating: 0, count: 20)
+        byteArray[0] = 6
+        byteArray[1] = UInt8(coefficient)
+        byteArray[2] = UInt8(remainder)
+        client.send(data: byteArray)
     }
     
 }

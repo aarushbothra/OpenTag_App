@@ -26,11 +26,14 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
     @IBOutlet var connectToServerButton: UIButton!
     @IBOutlet var writeServerInfoToTagButton: UIButton!
     @IBOutlet var readServerAddressTagButton: UIButton!
+    @IBOutlet var getServerSoftwareButton: UIButton!
     
     @IBOutlet var serverAddressTextField: UITextField!
     @IBOutlet var serverPortTextField: UITextField!
         
-     override func viewDidLoad() {
+    @IBOutlet var serverConnectStackView: UIStackView!
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
 
@@ -44,11 +47,7 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
         NFCRead = NFCReadHandler()
         NFCWrite = NFCWriteHandler()
                 
-        connectToGunButton.isEnabled = false
-        connectToServerButton.isEnabled = false
-        serverAddressTextField.isEnabled = false
-        serverPortTextField.isEnabled = false
-        readServerAddressTagButton.isEnabled = false
+        serverConnectStackView.isHidden = true
         
         serverPortTextField.delegate = self
         serverAddressTextField.delegate = self
@@ -110,14 +109,15 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
         NFCRead.readServerAddressTag()
     }
     
-    func enableTextFields(){
-        serverPortTextField.isEnabled = true
-        serverAddressTextField.isEnabled = true
+    @IBAction func getServerSoftwareButton(_ sender: Any) {
+        if let url = URL(string: "https://github.com/APersonnn/OpenTag_Server") {
+            UIApplication.shared.open(url)
+        }
     }
     
-    func enableConnectToServerButton(){
-        connectToServerButton.isEnabled = true
-        readServerAddressTagButton.isEnabled = true
+    func showConnectToServer(){
+        serverConnectStackView.isHidden = false
+        connectToGunButton.isHidden = true
     }
     
     func alertVersionMismatch(serverVersion: String, clientVersion: String){
@@ -128,6 +128,12 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
     
     func alertUnableToConnectToServer(){
         let alert = UIAlertController(title: "Unable to Connect", message:"Unable to connect to server", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func alertGunConnectConfirmation() {
+        let alert = UIAlertController(title: "Gun Connected!", message:"Pull the trigger after dismissing this alert to confirm that the gun has connected", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }

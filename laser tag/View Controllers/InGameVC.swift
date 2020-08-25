@@ -274,7 +274,7 @@ extension InGameVC {
         NSLayoutConstraint.activate(constraints)
         reloadView.backgroundColor = UIColor.systemGray2
         
-        if handleGame.playerSelf.totalAmmo > 0 || handleGame.playerSelf.ammoInGun > 0 {
+        if (handleGame.playerSelf.totalAmmo > 0 || handleGame.playerSelf.ammoInGun > 0) || Game.ammo == 0 {
             let reloadProgress = UIProgressView()
             reloadProgress.translatesAutoresizingMaskIntoConstraints = false
             reloadView.addSubview(reloadProgress)

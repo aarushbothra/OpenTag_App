@@ -12,10 +12,10 @@ import UIKit
 
 protocol BTDelegateMain : NSObject {
     func changeConnectToGunButtonState(to state:Bool)
-    func enableTextFields()
-    func enableConnectToServerButton()
     func clearTextFields()
     func flashScreen()
+    func alertGunConnectConfirmation()
+    func showConnectToServer()
 }
 
 protocol BTDelegateAdmin {
@@ -167,11 +167,13 @@ extension BluetoothHandler: CBCentralManagerDelegate {
     //function called after manager is connected to gun
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connected to gun!")
+        DispatchQueue.main.async {
+            self.mainViewController.alertGunConnectConfirmation()
+        }
         laserTagGun.discoverServices([gunServiceRecoilGunUUID])
         //gunConnected = true
         print("connect to server enabled")
-        mainViewController.enableTextFields()
-        mainViewController.enableConnectToServerButton()
+        mainViewController.showConnectToServer()
     }
     
     func syncGun() {
