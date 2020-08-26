@@ -15,11 +15,14 @@ protocol GameHandlerDelegate {
     func setAmmoInGunLabel(string: String)
     func setTotalAmmoLabel(string: String)
     func setAlertLabel(string: String)
-    func updateKillsLabel()
+    func updateScoreLabel()
     func updateDeathsLabel()
     func updateTableView(teamsSorted: [Team], playersInYourTeam: [Player])
     func updateTableView(playersSorted: [Player])
     func switchToDeathScreen(string: String)
+    func setShieldBar()
+    func setBackgroundWhite()
+    func setBackgroundNormal()
 }
 
 struct Team {
@@ -50,12 +53,21 @@ class GameHandler {
     var fullAutoAmmo = 30
     var singleShotAmmo = 10
     
+    let dummyPlayer = Player(username: "dummy", team: -1, gunType: -1, gunID: -1, isSelf: false, kills: -1, deaths: -1, score: -1)
+    
+    //time oddball is first recieved
+    var playerWithOddball: Player!
+    var oddballTimer = Timer()
+    var oddballTimeElapsed = 0
+    
+    
     init() {
         for player in Players {
             if player.isSelf {
                 playerSelf = player
             }
         }
+        playerWithOddball = dummyPlayer
     }
     
     
@@ -138,6 +150,7 @@ class GameHandler {
     // handles respawning as well as refilling ammo and health
     func respawn() {
         playerSelf.health = 100
+        //playerSelf.shield = 0
         playerSelf.totalAmmo = Game.ammo
         gameViewController.setHealthBar()
         isDead = false
@@ -155,38 +168,22 @@ class GameHandler {
             }
             print(playerSelf.health)
             if Game.teamSetting == 0 {
-                switch playerShooting.gunType {
-                case 0://sniper
-                    playerSelf.health -= sniperDamage
-                case 1://burst
-                    playerSelf.health -= burstDamage
-                case 2://full auto
-                    playerSelf.health -= fullAutoDamage
-                case 3://single shot
-                    playerSelf.health -= singleShotDamage
-                default:
-                    break;
-                }
-                
-                
-                
-                if playerSelf.health <= 0 {
-                    networking.sendPlayerKilled(shooterGunID: playerShooting.gunID, selfGunID: playerSelf.gunID)
-                    bluetooth.syncGun()
-                    bluetooth.setReload(gunID: playerSelf.gunID)
-                    isDead = true
-                    gameViewController.setHealthBar()
-                    //  gameViewController.switchToDeathScreen(string: "Killed by \(playerShooting.username)")
-                    //bluetooth.syncGun()
-                    
-                } else {
-                    networking.sendPlayerHit(shooterGunID: playerShooting.gunID, selfGunID: playerSelf.gunID)
+                if playerSelf.shield > 0 {
+                    switch playerShooting.gunType {
+                    case 0://sniper
+                        playerSelf.shield -= sniperDamage
+                    case 1://burst
+                        playerSelf.shield -= burstDamage
+                    case 2://full auto
+                        playerSelf.shield -= fullAutoDamage
+                    case 3://single shot
+                        playerSelf.shield -= singleShotDamage
+                    default:
+                        break;
+                    }
+                    gameViewController.setShieldBar()
                     gameViewController.flashRed()
-                    gameViewController.setHealthBar()
-                }
-                
-            } else {
-                if playerShooting.team != playerSelf.team {
+                } else {
                     switch playerShooting.gunType {
                     case 0://sniper
                         playerSelf.health -= sniperDamage
@@ -206,10 +203,9 @@ class GameHandler {
                         networking.sendPlayerKilled(shooterGunID: playerShooting.gunID, selfGunID: playerSelf.gunID)
                         bluetooth.syncGun()
                         bluetooth.setReload(gunID: playerSelf.gunID)
-                        gameViewController.setHealthBar()
-                        // gameViewController.switchToDeathScreen(string: "Killed by \(playerShooting.username)")
-                        
                         isDead = true
+                        gameViewController.setHealthBar()
+                        //  gameViewController.switchToDeathScreen(string: "Killed by \(playerShooting.username)")
                         //bluetooth.syncGun()
                         
                     } else {
@@ -217,13 +213,61 @@ class GameHandler {
                         gameViewController.flashRed()
                         gameViewController.setHealthBar()
                     }
-                    
                 }
                 
+                
+            } else {
+                if playerSelf.shield > 0 {
+                    switch playerShooting.gunType {
+                    case 0://sniper
+                        playerSelf.shield -= sniperDamage
+                    case 1://burst
+                        playerSelf.shield -= burstDamage
+                    case 2://full auto
+                        playerSelf.shield -= fullAutoDamage
+                    case 3://single shot
+                        playerSelf.shield -= singleShotDamage
+                    default:
+                        break;
+                    }
+                    gameViewController.setShieldBar()
+                    gameViewController.flashRed()
+                } else {
+                    if playerShooting.team != playerSelf.team {
+                        switch playerShooting.gunType {
+                        case 0://sniper
+                            playerSelf.health -= sniperDamage
+                        case 1://burst
+                            playerSelf.health -= burstDamage
+                        case 2://full auto
+                            playerSelf.health -= fullAutoDamage
+                        case 3://single shot
+                            playerSelf.health -= singleShotDamage
+                        default:
+                            break;
+                        }
+                        
+                        
+                        
+                        if playerSelf.health <= 0 {
+                            networking.sendPlayerKilled(shooterGunID: playerShooting.gunID, selfGunID: playerSelf.gunID)
+                            bluetooth.syncGun()
+                            bluetooth.setReload(gunID: playerSelf.gunID)
+                            gameViewController.setHealthBar()
+                            // gameViewController.switchToDeathScreen(string: "Killed by \(playerShooting.username)")
+                            
+                            isDead = true
+                            //bluetooth.syncGun()
+                            
+                        } else {
+                            networking.sendPlayerHit(shooterGunID: playerShooting.gunID, selfGunID: playerSelf.gunID)
+                            gameViewController.flashRed()
+                            gameViewController.setHealthBar()
+                        }
+                    }
+                }
             }
-            
         }
-        
     }
     
     func handleReload(){
@@ -324,60 +368,138 @@ class GameHandler {
             playerSelf.totalAmmo += 45
         }
         
-        
-        if Game.teamSetting > 0 {
-            let teams = createTeams()
-            
-            gameViewController.updateTableView(teamsSorted: teams.sorted(by: {$0.score > $1.score}), playersInYourTeam: self.findPlayersInYourTeam())
-            gameViewController.updateKillsLabel()
-            gameViewController.updateDeathsLabel()
-            
-        } else {
-            gameViewController.updateTableView(playersSorted: Players.sorted(by: {$0.kills > $1.kills}))
-            gameViewController.updateKillsLabel()
-            gameViewController.updateDeathsLabel()
-            
-        }
-        
         var gameEnding = false
-        if Game.killLimit > 0 {
-            if Game.teamSetting > 0 {
-                let teams = createTeams()
-                for team in teams {
-                    if findTeamScore(team: team.team) >= Game.killLimit {
-                        networking.endGame()
-                        gameEnding = true
+        
+        if Game.gameType == 0 {
+            createInGameTableViews()
+        
+            if Game.scoreLimit > 0 {
+                if Game.teamSetting > 0 {
+                    let teams = createTeams()
+                    for team in teams {
+                        if findTeamScore(team: team.team) >= Game.scoreLimit {
+                            networking.endGame()
+                            gameEnding = true
+                        }
                     }
-                }
-            } else {
-                for player in Players {
-                    if player.kills >= Game.killLimit {
-                        networking.endGame()
-                        gameEnding = true
+                } else {//FFA
+                    for player in Players {
+                        if player.kills >= Game.scoreLimit {
+                            networking.endGame()
+                            gameEnding = true
+                        }
                     }
+                    
                 }
             }
         }
         
         if !gameEnding && playerHit.gunID == playerSelf.gunID {
+            if playerSelf.gunID == playerWithOddball.gunID {
+                networking.oddballLost()
+            }
             gameViewController.switchToDeathScreen(string: "Killed by \(playerShooting.username)")
         }
+    }
+    
+    func oddballReceived(gunID: Int) {
+        for player in Players {
+            if player.gunID == gunID {
+                playerWithOddball = player
+            }
+        }
         
+        if playerWithOddball.gunID == playerSelf.gunID {
+            playerSelf.shield = 100
+            DispatchQueue.global(qos: .utility).async {
+                self.startOddballTimer()
+            }
+            
+            DispatchQueue.main.async {
+                self.gameViewController.setBackgroundWhite()
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.createInGameTableViews()
+            self.gameViewController.setShieldBar()
+            
+        }
         
     }
     
+    func startOddballTimer() {
+        oddballTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(handleOddballTimer), userInfo: nil, repeats: true)
+        let runLoop = RunLoop.current
+        runLoop.add(oddballTimer, forMode: .default)
+        runLoop.run()
+    }
+    
+    @objc func handleOddballTimer() {
+        oddballTimeElapsed += 1
+        
+        if oddballTimeElapsed % 5 == 0 {
+            networking.scoreIncrease()
+        }
+    }
+    
+    func scoreIncrease(gunID: Int) {
+        for player in Players {
+            if player.gunID == gunID {
+                player.score += 1
+                if player.score == 255 || player.score == Game.scoreLimit{
+                    if Game.timeLimit > 0 {
+                        timer.invalidate()
+                    }
+                    if player.isSelf {
+                        oddballTimer.invalidate()
+                    }
+                    networking.endGame()
+                }
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.createInGameTableViews()
+        }
+        
+    }
+    
+    func oddballLost() {
+        playerWithOddball = dummyPlayer
+        oddballTimer.invalidate()
+        
+        DispatchQueue.main.async {
+            self.createInGameTableViews()
+            self.gameViewController.setBackgroundNormal()
+        }
+    }
+}
+
+
+extension GameHandler {
     func createInGameTableViews() {
         if Game.teamSetting > 0 {
             let teams = createTeams()
             
             gameViewController.updateTableView(teamsSorted: teams.sorted(by: {$0.score > $1.score}), playersInYourTeam: self.findPlayersInYourTeam())
-            gameViewController.updateKillsLabel()
+            gameViewController.updateScoreLabel()
             gameViewController.updateDeathsLabel()
             
-        } else {
-            gameViewController.updateTableView(playersSorted: Players.sorted(by: {$0.kills > $1.kills}))
-            gameViewController.updateKillsLabel()
-            gameViewController.updateDeathsLabel()
+        } else {//FFA
+            switch Game.gameType {
+            case 0://regular FFA
+                gameViewController.updateTableView(playersSorted: Players.sorted(by: {$0.kills > $1.kills}))
+                gameViewController.updateScoreLabel()
+                gameViewController.updateDeathsLabel()
+            case 1://oddball
+                gameViewController.updateTableView(playersSorted: Players.sorted(by: {$0.score > $1.score}))
+                gameViewController.updateScoreLabel()
+                gameViewController.updateDeathsLabel()
+            default:
+                break
+            }
+            
             
         }
     }
@@ -395,9 +517,16 @@ class GameHandler {
     func findTeamScore(team: Int) -> Int{
         var teamScore = 0
         for player in Players {
-            if player.team == team {
-                teamScore += player.kills
+            if Game.gameType == 0 {
+                if player.team == team {
+                    teamScore += player.kills
+                }
+            } else {
+                if player.team == team {
+                    teamScore += player.score
+                }
             }
+            
         }
         return teamScore
     }

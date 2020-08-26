@@ -30,6 +30,13 @@ class NFCWriteHandler: NSObject, NFCNDEFReaderSessionDelegate {
         messageToWrite = "addr: \(serverAddress),\(serverPort)"
     }
     
+    func createOddballCard(){
+        session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
+        session?.alertMessage = "Hold your phone near an NFC tag to create an oddball"
+        session.begin()
+        messageToWrite = "oddball"
+    }
+    
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {}
     
     func readerSessionDidBecomeActive(_ session: NFCNDEFReaderSession) {}

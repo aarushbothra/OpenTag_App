@@ -12,12 +12,15 @@ class ShowMinusOptions: UIViewController {
 
     @IBOutlet var disconnectButton: UIButton!
     @IBOutlet var restartButton: UIButton!
+    @IBOutlet var endGameButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if networking.isAdmin {
             disconnectButton.isHidden = true
+        } else {
+            endGameButton.isHidden = true
         }
         // Do any additional setup after loading the view.
     }
@@ -29,6 +32,11 @@ class ShowMinusOptions: UIViewController {
     
     @IBAction func restartButton(_ sender: Any) {
         networking.restartServer()
+        dismiss(animated: true)
+    }
+    
+    @IBAction func endGameButton(_ sender: Any) {
+        networking.endGame()
         dismiss(animated: true)
     }
     

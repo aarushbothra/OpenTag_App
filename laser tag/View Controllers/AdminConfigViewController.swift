@@ -12,25 +12,29 @@ class AdminConfigViewController: UIViewController, BTDelegateAdmin, TCPDelegateA
     
     @IBOutlet var restartServerButton: UIButton!
     @IBOutlet var createGameButton: UIButton!
+    @IBOutlet var createOddballTagButton: UIButton!
     
     @IBOutlet var teamsPickerView: UIPickerView!
     @IBOutlet var locationPickerView: UIPickerView!
+    @IBOutlet var gameTypePickerView: UIPickerView!
     
     @IBOutlet var ammoLabel: UILabel!
     @IBOutlet var livesLabel: UILabel!
     @IBOutlet var timeLimitLabel: UILabel!
-    @IBOutlet var killLimitLabel: UILabel!
+    @IBOutlet var scoreLimitLabel: UILabel!
     
     @IBOutlet var ammoSlider: UISlider!
     @IBOutlet var livesSlider: UISlider!
     @IBOutlet var timeLimitSlider: UISlider!
-    @IBOutlet var killLimitSlider: UISlider!
+    @IBOutlet var scoreLimitSlider: UISlider!
     
     let teamsOptions = ["FFA", "2 Teams", "3 Teams", "4 Teams","5 Teams","6 Teams","7 Teams","8 Teams"]
     let locationOptions = ["Indoor", "Outdoor"]
+    let gameTypeOptions = ["Normal", "Oddball"]
     
     var teamSelected: Int = 0
     var locationSelected = 0
+    var gameTypeSelected = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,10 @@ class AdminConfigViewController: UIViewController, BTDelegateAdmin, TCPDelegateA
         teamsPickerView.delegate = self
         locationPickerView.dataSource = self
         locationPickerView.delegate = self
+        gameTypePickerView.dataSource = self
+        gameTypePickerView.delegate = self
+        livesSlider.isEnabled = false 
+        createOddballTagButton.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -51,14 +59,18 @@ class AdminConfigViewController: UIViewController, BTDelegateAdmin, TCPDelegateA
     }
     
     @IBAction func createGameButton(_ sender: Any) {
-        if Int(killLimitSlider.value) == 0 && Int(timeLimitSlider.value) == 0{
-            let alert = UIAlertController(title: "Error", message: "Kill Limit and Time Limit cannot be unlimited in the same game", preferredStyle: .alert)
+        if Int(scoreLimitSlider.value) == 0 && Int(timeLimitSlider.value) == 0{
+            let alert = UIAlertController(title: "Error", message: "Score Limit and Time Limit cannot be unlimited in the same game", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
         } else{
-            networking.sendGameConfig(teamSetting: teamSelected, ammo: Int(ammoSlider.value), lives: Int(livesSlider.value), timeLimit: Int(timeLimitSlider.value), killLimit: Int(killLimitSlider.value), location: locationSelected)
+            networking.sendGameConfig(teamSetting: teamSelected, ammo: Int(ammoSlider.value), lives: Int(livesSlider.value), timeLimit: Int(timeLimitSlider.value), scoreLimit: Int(scoreLimitSlider.value), location: locationSelected, gameType: gameTypeSelected)
         }
         
+    }
+    
+    @IBAction func createOddballTagButton(_ sender: Any) {
+        NFCWrite.createOddballCard()
     }
     
     @IBAction func ammoSlider(_ sender: Any) {
@@ -86,11 +98,11 @@ class AdminConfigViewController: UIViewController, BTDelegateAdmin, TCPDelegateA
         }
     }
     
-    @IBAction func killLimitSlider(_ sender: Any) {
-        if Int(killLimitSlider.value) == 0{
-            killLimitLabel.text = "Kill Limit: Unlimited"
+    @IBAction func scoreLimitSlider(_ sender: Any) {
+        if Int(scoreLimitSlider.value) == 0{
+            scoreLimitLabel.text = "Score Limit: Unlimited"
         } else {
-            killLimitLabel.text = "Kill Limit: " + String(Int(killLimitSlider.value))
+            scoreLimitLabel.text = "Score Limit: \(Int(scoreLimitSlider.value))"
         }
     }
     
@@ -155,30 +167,67 @@ extension AdminConfigViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 0 {
+        switch pickerView.tag {
+        case 0:
             return teamsOptions.count
-        } else {
-           // print("locationoptions.count")
+        case 1:
             return locationOptions.count
+        case 2:
+            return gameTypeOptions.count
+        default:
+            break
         }
-        
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView.tag == 0 {
+        switch pickerView.tag {
+        case 0:
             return teamsOptions[row]
-        } else {
-          //  print("locationoptions[row]")
+        case 1:
             return locationOptions[row]
+        case 2:
+            return gameTypeOptions[row]
+        default:
+            break
         }
-        
+        return "Error"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 0 {
+        switch pickerView.tag {
+        case 0:
             teamSelected = row
-        } else {
+        case 1:
             locationSelected = row
+        case 2:
+            gameTypeSelected = row
+            switch row {
+            case 0:
+                createOddballTagButton.isHidden = true
+                livesLabel.isHidden = false
+                livesSlider.isHidden = false
+                livesSlider.value = 0
+                if Int(livesSlider.value) == 0{
+                    livesLabel.text = "Lives: Unlimited"
+                } else {
+                    livesLabel.text = "Lives: " + String(Int(livesSlider.value))
+                }
+            case 1:
+                livesLabel.isHidden = true
+                livesSlider.isHidden = true
+                livesSlider.value = 0
+                createOddballTagButton.isHidden = false
+                if Int(livesSlider.value) == 0{
+                    livesLabel.text = "Lives: Unlimited"
+                } else {
+                    livesLabel.text = "Lives: " + String(Int(livesSlider.value))
+                }
+            default:
+                break
+            }
+        default:
+            break
         }
         
     }

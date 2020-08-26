@@ -72,16 +72,6 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
         networking.connectToServer(addr: addr, port: Int32(portInt))
     }
     
-    @IBAction func serverAddressTextField(_ sender: Any) {
-        serverPortTextField.text = ""
-
-    }
-
-    @IBAction func serverPortTextField(_ sender: Any) {
-        serverAddressTextField.text = ""
-        
-
-    }
     
     func clearTextFields(){
         serverPortTextField.text = ""
@@ -182,7 +172,6 @@ class ViewController: UIViewController, BTDelegateMain, TCPDelegateMain {
             snapshotView.removeFromSuperview()
         }
     }
-    
 }
 
 extension ViewController: UITextFieldDelegate{

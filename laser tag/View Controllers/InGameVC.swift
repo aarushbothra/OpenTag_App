@@ -15,13 +15,14 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
     @IBOutlet var inGameCV: UICollectionView!
     
     @IBOutlet var timerLabel: UILabel!
-    @IBOutlet var killsLabel: UILabel!
+    @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var deathsLabel: UILabel!
     @IBOutlet var ammoInGunLabel: UILabel!
     @IBOutlet var totalAmmoLabel: UILabel!
     @IBOutlet var alertLabel: UILabel!
     
     @IBOutlet var healthBar: UIProgressView!
+    @IBOutlet var shieldBar: UIProgressView!
     
     @IBOutlet var plusButton: UIButton!
     @IBOutlet var minusButton: UIButton!
@@ -53,38 +54,10 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
         
         handleGame.createInGameTableViews()
         
-        healthBar.centerYAnchor.constraint(equalTo: healthBarView.centerYAnchor).isActive = true
         healthBar.transform = healthBar.transform.scaledBy(x: 1, y: 10)
+        shieldBar.transform = shieldBar.transform.scaledBy(x: 1, y: 10)
         
-        if Game.teamSetting > 0 {
-            for player in Players {
-                if player.gunID == bluetooth.gunID {
-                    switch player.team {
-                    case 1:
-                        view.backgroundColor = UIColor.red
-                    case 2:
-                        view.backgroundColor = UIColor.blue
-                    case 3:
-                        view.backgroundColor = UIColor.green
-                    case 4:
-                        view.backgroundColor = UIColor.purple
-                    case 5:
-                        view.backgroundColor = UIColor.orange
-                    case 6:
-                        view.backgroundColor = UIColor.cyan
-                    case 7:
-                        view.backgroundColor = UIColor.yellow
-                    case 8:
-                        view.backgroundColor = UIColor.magenta
-                    default:
-                        view.backgroundColor = UIColor.systemBlue
-                    }
-                }
-            }
-            
-        } else {
-            view.backgroundColor = UIColor.systemBlue
-        }
+        setBackgroundNormal()
         
         if let flowLayout = inGameCV.collectionViewLayout as? UICollectionViewFlowLayout,
             let CV = inGameCV {
@@ -132,6 +105,16 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
         
     }
     
+    func setShieldBar() {
+        var playerShield = Float(handleGame.playerSelf.shield)
+        if playerShield <= 0 {
+            playerShield = 0
+        }
+        let shieldFloat = Float(playerShield / 100)
+        
+        shieldBar.setProgress(shieldFloat, animated: true)
+    }
+    
     func setAmmoInGunLabel(string: String){
         ammoInGunLabel.text = string
     }
@@ -146,8 +129,17 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
         fadeViewOut(view: alertLabel, delay: 1)
     }
     
-    func updateKillsLabel(){
-        killsLabel.text = "K: \(handleGame.playerSelf.kills)"
+    func updateScoreLabel(){
+        switch Game.gameType {
+        case 0://TDM and FFA
+            scoreLabel.text = "S: \(handleGame.playerSelf.kills)"
+        case 1://Oddball
+            scoreLabel.text = "S: \(handleGame.playerSelf.score)"
+        default:
+            break
+            
+        }
+        
     }
     
     func updateDeathsLabel(){
@@ -292,7 +284,7 @@ extension InGameVC {
             reloadProgress.setProgress(0, animated: false)
             
             //reload time (seconds) = totalUnitCount / 100
-            let progress = Progress(totalUnitCount: 150)
+            let progress = Progress(totalUnitCount: 200)
             
             Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true){ (timer) in
                 
@@ -323,7 +315,6 @@ extension InGameVC {
             NSLayoutConstraint.activate(noAmmoLabelConstraints)
             
             noAmmoLabel.text = "Out of Ammo"
-            noAmmoLabel.adjustsFontSizeToFitWidth = true
             noAmmoLabel.textAlignment = .center
             noAmmoLabel.textColor = UIColor.systemBlue
             noAmmoLabel.font.withSize(40)
@@ -332,6 +323,42 @@ extension InGameVC {
         
         
         
+    }
+    
+    func setBackgroundWhite() {
+        view.backgroundColor = .white
+    }
+    
+    func setBackgroundNormal(){
+        if Game.teamSetting > 0 {
+            for player in Players {
+                if player.gunID == bluetooth.gunID {
+                    switch player.team {
+                    case 1:
+                        view.backgroundColor = UIColor.red
+                    case 2:
+                        view.backgroundColor = UIColor.blue
+                    case 3:
+                        view.backgroundColor = UIColor.green
+                    case 4:
+                        view.backgroundColor = UIColor.purple
+                    case 5:
+                        view.backgroundColor = UIColor.orange
+                    case 6:
+                        view.backgroundColor = UIColor.cyan
+                    case 7:
+                        view.backgroundColor = UIColor.yellow
+                    case 8:
+                        view.backgroundColor = UIColor.magenta
+                    default:
+                        view.backgroundColor = UIColor.systemBlue
+                    }
+                }
+            }
+            
+        } else {
+            view.backgroundColor = UIColor.systemBlue
+        }
     }
 }
 

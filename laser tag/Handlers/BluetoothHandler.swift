@@ -356,9 +356,15 @@ extension BluetoothHandler: CBPeripheralDelegate{
                     execute = false
                 } else {
                     print("Gun Setting: \(byteArray[15])")
-                    handleGame.playerSelf.ammoInGun = Int(byteArray[14])
+                    var playerSelf: Player!
+                    for player in Players {
+                        if player.isSelf {
+                            playerSelf = player
+                        }
+                    }
+                    playerSelf.ammoInGun = Int(byteArray[14])
                     //print("Player Gun Ammo: \(handleGame.playerSelf.ammoInGun ?? -1)")
-                    inGameVC.setAmmoInGunLabel(string: String(handleGame.playerSelf.ammoInGun))
+                    inGameVC.setAmmoInGunLabel(string: String(playerSelf.ammoInGun))
                 }
                 print("firing")
             case 2:

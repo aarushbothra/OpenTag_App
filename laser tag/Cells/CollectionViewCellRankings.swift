@@ -45,10 +45,21 @@ extension CollectionViewCellRankings: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RankingCellTV")!
         cell.backgroundColor = UIColor.systemGray2
-        
+        cell.isHighlighted = false
         switch cellNumber {
         case 0://FFA
-            cell.textLabel?.text = "\(playersSorted[indexPath.row].username): \(playersSorted[indexPath.row].kills)"
+            switch Game.gameType {
+            case 0://regular FFA
+                cell.textLabel?.text = "\(playersSorted[indexPath.row].username): S: \(playersSorted[indexPath.row].kills) D: \(playersSorted[indexPath.row].deaths)"
+            case 1://Oddball
+                cell.textLabel?.text = "\(playersSorted[indexPath.row].username): S: \(playersSorted[indexPath.row].score) K: \(playersSorted[indexPath.row].kills) D: \(playersSorted[indexPath.row].deaths)"
+                if handleGame.playerWithOddball.gunID == playersSorted[indexPath.row].gunID {
+                    cell.backgroundColor = .white
+                }
+            default:
+                break
+            }
+            
         case 1://Team rankings
             if Game.teamSetting > 0 {
                 cell.textLabel?.text = "Team \(String(teamsSorted[indexPath.row].team!)): \(String(teamsSorted[indexPath.row].score!))"
@@ -72,10 +83,26 @@ extension CollectionViewCellRankings: UITableViewDelegate, UITableViewDataSource
                 default:
                     cell.backgroundColor = UIColor.systemBlue
                 }
+                
+                if handleGame.playerWithOddball.team == teamsSorted[indexPath.row].team {
+                    cell.backgroundColor = .white
+                }
             }
         case 2://Players in team
-            print("printing team player")
-            cell.textLabel?.text = "\(playersInYourTeam[indexPath.row].username) | K: \(playersInYourTeam[indexPath.row].kills) D: \(playersInYourTeam[indexPath.row].deaths)"
+            switch Game.teamSetting {
+            case 0://regular TDM and FFA
+                print("printing team player")
+                cell.textLabel?.text = "\(playersInYourTeam[indexPath.row].username) | S: \(playersInYourTeam[indexPath.row].kills) D: \(playersInYourTeam[indexPath.row].deaths)"
+            case 1://Oddball
+                print("printing team player")
+                cell.textLabel?.text = "\(playersInYourTeam[indexPath.row].username) | S: \(playersInYourTeam[indexPath.row].score) K: \(playersInYourTeam[indexPath.row].kills) D: \(playersInYourTeam[indexPath.row].deaths)"
+                if handleGame.playerWithOddball.gunID == playersInYourTeam[indexPath.row].gunID {
+                    cell.backgroundColor = .white
+                }
+            default:
+                break
+            }
+            
         default:
             break
             

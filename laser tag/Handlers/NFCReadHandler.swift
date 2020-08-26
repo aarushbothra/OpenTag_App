@@ -22,6 +22,7 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
     //0 - Read to respawn
     //1 - read to refill
     //2 - read respawn point
+    //3 - read oddball
     var readType = 0
     
     func readRespawnPoint() {
@@ -42,6 +43,13 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
         readType = 2
         readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
         readSession?.alertMessage = "Hold your phone near the server address NFC tag"
+        readSession.begin()
+    }
+    
+    func readOddballTag() {
+        readType = 3
+        readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
+        readSession?.alertMessage = "Hold your phone near the oddball NFC tag"
         readSession.begin()
     }
     
@@ -73,6 +81,10 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
                     nfcMessage = nfcMessage.replacingOccurrences(of: "addr: ", with: "")
                     let stringArray = nfcMessage.components(separatedBy: ",")
                     networking.connectToServer(addr: stringArray[0], port: Int32(Int(stringArray[1]) ?? 1))
+                }
+            case 3:
+                if nfcMessage == "oddball" && handleGame.playerWithOddball.gunID == -1 {
+                    networking.oddballReceived()
                 }
             default:
                 session.alertMessage = "Not a valid NFC tag"

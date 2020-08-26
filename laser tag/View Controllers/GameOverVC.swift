@@ -35,16 +35,6 @@ class GameOverVC: UIViewController {
         print("switching to mainVC")
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension GameOverVC: UITableViewDelegate, UITableViewDataSource {
@@ -115,10 +105,28 @@ extension GameOverVC: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             cell?.backgroundColor = UIColor.systemGray2
-            cell?.textLabel?.text = "\(team[indexPath.row].username) | K: \(team[indexPath.row].kills) D: \(team[indexPath.row].deaths)"
+            switch Game.gameType {
+            case 0://regular FFA and TDM
+                cell?.textLabel?.text = "\(team[indexPath.row].username) | S: \(team[indexPath.row].kills) D: \(team[indexPath.row].deaths)"
+            case 1://Oddball
+                print("creating players cell")
+                cell?.textLabel?.text = "\(team[indexPath.row].username) | S: \(team[indexPath.row].score) K: \(team[indexPath.row].kills) D: \(team[indexPath.row].deaths)"
+            default:
+                break
+            }
+            
         } else {
-            print("creating players cell")
-            cell?.textLabel?.text = "\(Players[indexPath.row].username) | K: \(Players[indexPath.row].kills) D: \(Players[indexPath.row].deaths)"
+            switch Game.gameType {
+            case 0://regular FFA and TDM
+                print("creating players cell")
+                cell?.textLabel?.text = "\(Players[indexPath.row].username) | S: \(Players[indexPath.row].kills) D: \(Players[indexPath.row].deaths)"
+            case 1://Oddball
+                print("creating players cell")
+                cell?.textLabel?.text = "\(Players[indexPath.row].username) | S: \(Players[indexPath.row].score) K: \(Players[indexPath.row].kills) D: \(Players[indexPath.row].deaths)"
+            default:
+                break
+            }
+            
         }
         
         

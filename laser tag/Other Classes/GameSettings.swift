@@ -14,8 +14,8 @@ struct GameSettings {
     var ammo: Int
     var lives: Int
     var timeLimit: Int
-    var killLimit: Int
+    var scoreLimit: Int
     var location: Int
-    
+    var gameType: Int
     
 }

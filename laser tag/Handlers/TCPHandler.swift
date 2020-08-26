@@ -65,8 +65,8 @@ class TCPHandler: NSObject{
     
     var gameStarted = false
     
-    //version 1.2
-    var version = [Int(1), Int(2)]
+    //version 1.3
+    var version = [Int(1), Int(3)]
     
     func findPlayerByGunID(gunID: Int) -> Player{
         for player in Players{
@@ -169,7 +169,7 @@ class TCPHandler: NSObject{
 
                 }
             case 2://creates game
-                Game = GameSettings(teamSetting: Int(serverMessage[1]), ammo: Int(serverMessage[2]), lives: Int(serverMessage[3]), timeLimit: Int(serverMessage[4]), killLimit: Int(serverMessage[5]), location: Int(serverMessage[6]))
+                Game = GameSettings(teamSetting: Int(serverMessage[1]), ammo: Int(serverMessage[2]), lives: Int(serverMessage[3]), timeLimit: Int(serverMessage[4]), scoreLimit: Int(serverMessage[5]), location: Int(serverMessage[6]), gameType: serverMessage[7])
                 DispatchQueue.main.async {
                     switch self.activeVC{
                     case "admin":
@@ -200,7 +200,7 @@ class TCPHandler: NSObject{
                     isSelf = true
                 }
                 
-                Players.append(Player(username: username!, team: serverMessage[11], gunType: serverMessage[12], gunID: serverMessage[13], isSelf: isSelf, kills: serverMessage[14], deaths: serverMessage[15]))
+                Players.append(Player(username: username!, team: serverMessage[11], gunType: serverMessage[12], gunID: serverMessage[13], isSelf: isSelf, kills: serverMessage[14], deaths: serverMessage[15], score: serverMessage[16]))
                 
                 let playerAdded = Players[Players.count - 1]
                 switch serverMessage[12] {
@@ -276,6 +276,15 @@ class TCPHandler: NSObject{
                 if gameStarted {
                     handleGame.gameTime = Double((serverMessage[1] * 255) + serverMessage[2])
                 }
+                
+            case 10:
+                handleGame.oddballReceived(gunID: serverMessage[1])
+                
+            case 11:
+                handleGame.oddballLost()
+                
+            case 12:
+                handleGame.scoreIncrease(gunID: serverMessage[1])
                 
             case 253://version check
                 print("version from server: \(serverMessage[1]).\(serverMessage[2])")
@@ -405,14 +414,15 @@ extension TCPHandler{
         print("disconnected")
     }
     
-    public func sendGameConfig(teamSetting:Int, ammo:Int, lives:Int, timeLimit:Int, killLimit:Int, location: Int){
+    public func sendGameConfig(teamSetting:Int, ammo:Int, lives:Int, timeLimit:Int, scoreLimit:Int, location: Int, gameType: Int){
         var byteArray = [UInt8](repeating: 0, count: 20)
         byteArray[1] = UInt8(teamSetting)
         byteArray[2] = UInt8(ammo)
         byteArray[3] = UInt8(lives)
         byteArray[4] = UInt8(timeLimit)
-        byteArray[5] = UInt8(killLimit)
+        byteArray[5] = UInt8(scoreLimit)
         byteArray[6] = UInt8(location)
+        byteArray[7] = UInt8(gameType)
         print("game setup: \(byteArray)")
         client.send(data: byteArray)
     }
@@ -470,6 +480,26 @@ extension TCPHandler{
         client.send(data: byteArray)
     }
     
+    func oddballReceived() {
+        var byteArray = [UInt8](repeating: 0, count: 20)
+        byteArray[0] = 7
+        byteArray[1] = UInt8(handleGame.playerSelf.gunID)
+        client.send(data: byteArray)
+    }
+    
+    func scoreIncrease() {
+        var byteArray = [UInt8](repeating: 0, count: 20)
+        byteArray[0] = 9
+        byteArray[1] = UInt8(handleGame.playerSelf.gunID)
+        client.send(data: byteArray)
+    }
+    
+    func oddballLost() {
+        var byteArray = [UInt8](repeating: 0, count: 20)
+        byteArray[0] = 8
+        byteArray[1] = UInt8(handleGame.playerSelf.gunID)
+        client.send(data: byteArray)
+    }
 }
 
 extension StringProtocol {
