@@ -89,6 +89,8 @@ class BluetoothHandler: NSObject {
     
     var execute = true
     
+    var possibleGuns = [Gun]()
+    
     public func initializeCentraManager(){
         print("initializing")
         centralManager = CBCentralManager(delegate: self, queue: nil)
@@ -146,21 +148,63 @@ extension BluetoothHandler: CBCentralManagerDelegate {
     
     public func connectToGun() {
         
-        self.centralManager.scanForPeripherals(withServices: [gunServiceUUID])
+        self.centralManager.scanForPeripherals(withServices: [self.gunServiceUUID])
+        
+        let progress = Progress(totalUnitCount: 10)
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true){ (timer) in
+            
+            guard progress.isFinished == false else {
+                timer.invalidate()
+                print("attempting connection")
+                if self.possibleGuns.count > 0 {
+                    var peripheralToConnect = self.possibleGuns[0]
+                    for gun in self.possibleGuns {
+                        print(Int(gun.RSSI))
+                        print(gun.peripheral.identifier)
+                        if Int(gun.RSSI) > Int(peripheralToConnect.RSSI) {
+                            peripheralToConnect = gun
+                        }
+                    }
+                    print("Peripheral To Connect: \(peripheralToConnect.peripheral.identifier)")
+                    //self.possibleGuns.sorted(by: {Int($0.RSSI) < Int($1.RSSI)})
+                    print("connecting")
+                    self.laserTagGun = peripheralToConnect.peripheral
+                    //points the peripheral to its delegate function
+                    self.laserTagGun.delegate = self
+                    self.centralManager.connect(self.laserTagGun)
+                    
+                }
+                return
+            }
+            
+            progress.completedUnitCount += 1
+            
+            
+        }
     }
     
+    
     //function called after manager has found gun
+    
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        centralManager.stopScan()
+        //centralManager.stopScan()
+        print("scanning")
+        if possibleGuns.count == 0 {
+            possibleGuns.append(Gun(peripheral: peripheral, RSSI: RSSI))
+            //print(peripheral)
+        } else {
+            for gun in possibleGuns {
+                if gun.peripheral.identifier != peripheral.identifier {
+                    possibleGuns.append(Gun(peripheral: peripheral, RSSI: RSSI))
+                    //print(peripheral)
+                }
+            }
+        }
+        
         //peripheral is gun
-        print(peripheral)
-        laserTagGun = peripheral
-        
-        //points the peripheral to its delegate function
-        laserTagGun.delegate = self
         
         
-        centralManager.connect(laserTagGun)
         
     }
     
@@ -375,7 +419,11 @@ extension BluetoothHandler: CBPeripheralDelegate{
                     //handleGame.resetHealth()
                     execute = false
                 }
-                
+            case 4:
+                if networking.gameStarted && !handleGame.isDead {
+                    NFCRead.readNFCTag()
+                    execute = false
+                }
             default:
                 break
             }
@@ -418,4 +466,8 @@ extension BluetoothHandler: CBPeripheralDelegate{
     
 }
 
+struct Gun {
+    let peripheral: CBPeripheral
+    let RSSI: NSNumber
+}
 

@@ -264,17 +264,19 @@ class TCPHandler: NSObject{
                 }
                 
             case 8:
-                if Game.timeLimit > 0 {
-                    handleGame.timer.invalidate()
-                }
+                
+                handleGame.timer.invalidate()
+                
                 DispatchQueue.main.async {
-                    self.inGameVCTCP.gameOver()
+                    if self.activeVC == "inGame" {
+                        self.inGameVCTCP.gameOver()
+                    }
                     bluetooth.disconnectGun()
                 }
                 
             case 9:
                 if gameStarted {
-                    handleGame.gameTime = Double((serverMessage[1] * 255) + serverMessage[2])
+                    handleGame.gameTimeElapsed = Double((serverMessage[1] * 255) + serverMessage[2])
                 }
                 
             case 10:

@@ -32,13 +32,6 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
         readSession.begin()
     }
     
-    func readRefillAmmoAndHealth() {
-        readType = 1
-        readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
-        readSession?.alertMessage = "Hold your phone near the respawn NFC tag"
-        readSession.begin()
-    }
-    
     func readServerAddressTag(){
         readType = 2
         readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
@@ -46,13 +39,12 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
         readSession.begin()
     }
     
-    func readOddballTag() {
-        readType = 3
+    func readNFCTag () {
+        readType = -1
         readSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
-        readSession?.alertMessage = "Hold your phone near the oddball NFC tag"
+        readSession?.alertMessage = "Hold your phone near a NFC tag"
         readSession.begin()
     }
-    
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {}
     
     func readerSessionDidBecomeActive(_ session: NFCNDEFReaderSession) {}
@@ -71,23 +63,33 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
             case 0:
                 if nfcMessage == "respawn"{
                     self.deathScreenNFC.respawn()
-                }
-            case 1:
-                if nfcMessage == "respawn" {
-                    handleGame.respawn()
+                } else {
+                    session.alertMessage = "Invalid NFC Tag"
                 }
             case 2:
                 if String(nfcMessage[..<nfcMessage.index(nfcMessage.startIndex, offsetBy: 6)]) == "addr: " {
                     nfcMessage = nfcMessage.replacingOccurrences(of: "addr: ", with: "")
                     let stringArray = nfcMessage.components(separatedBy: ",")
                     networking.connectToServer(addr: stringArray[0], port: Int32(Int(stringArray[1]) ?? 1))
-                }
-            case 3:
-                if nfcMessage == "oddball" && handleGame.playerWithOddball.gunID == -1 {
-                    networking.oddballReceived()
+                } else {
+                    session.alertMessage = "Invalid NFC Tag"
                 }
             default:
-                session.alertMessage = "Not a valid NFC tag"
+                switch nfcMessage {
+                case "respawn":
+                    if handleGame.playerWithOddball.gunID != handleGame.playerSelf.gunID {
+                        handleGame.respawn()
+                    }
+                    
+                case "oddball":
+                    if handleGame.playerWithOddball.gunID == -1 {
+                        networking.oddballReceived()
+                    } else {
+                        session.alertMessage = "Oddball has already been claimed"
+                    }
+                default:
+                    session.alertMessage = "Invalid NFC Tag"
+                }
             }
             
             session.invalidate()

@@ -31,13 +31,13 @@ class ShowPlusOptions: UIViewController {
     }
     
     @IBAction func refillButton(_ sender: Any) {
-        NFCRead.readRefillAmmoAndHealth()
-        dismiss(animated: true)
+//        NFCRead.readRefillAmmoAndHealth()
+//        dismiss(animated: true)
     }
     
     @IBAction func claimOddballButton(_ sender: Any) {
-        NFCRead.readOddballTag()
-        dismiss(animated: true)
+//        NFCRead.readOddballTag()
+//        dismiss(animated: true)
     }
     /*
     // MARK: - Navigation

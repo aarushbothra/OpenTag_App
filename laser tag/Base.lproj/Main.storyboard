@@ -996,6 +996,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F1P-Ls-BBq"/>
                     </view>
+                    <navigationItem key="navigationItem" id="r71-o9-28G"/>
                     <connections>
                         <outlet property="alertLabel" destination="zsK-n7-JGJ" id="1C1-Wm-8WK"/>
                         <outlet property="ammoInGunLabel" destination="iOj-hl-sOW" id="KLH-TX-RUc"/>
@@ -1014,7 +1015,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kn0-UI-idT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4441.875" y="124.64788732394366"/>
+            <point key="canvasLocation" x="5380" y="124.58770614692655"/>
         </scene>
         <!--Game OverVC-->
         <scene sceneID="zd3-Dt-sYF">
@@ -1077,7 +1078,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I16-SX-FVI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5418.75" y="128.87323943661971"/>
+            <point key="canvasLocation" x="6357.6000000000004" y="128.18590704647679"/>
         </scene>
         <!--Starting CountdownVC-->
         <scene sceneID="oEX-O0-1lM">
@@ -1300,6 +1301,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBK-fa-Q3e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4437.6000000000004" y="1563.8680659670167"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CM9-4m-x3t">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2NU-sP-Yjw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wiv-O1-QYZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Lbb-TB-4aH" kind="relationship" relationship="rootViewController" id="qYd-ft-sZh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JTL-Nx-gG8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4440.8000000000002" y="124.58770614692655"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

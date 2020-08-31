@@ -9,7 +9,7 @@
 import UIKit
 
 class StartingCountdownVC: UIViewController {
-
+    
     @IBOutlet var startingCountdownLabel: UILabel!
     var timer: Timer!
     var counter = 0
@@ -28,26 +28,21 @@ class StartingCountdownVC: UIViewController {
         if counter == 5 {
             self.timer.invalidate()
             dismiss(animated: true)
-            if Game.timeLimit > 0{
-                
-                DispatchQueue.global(qos: .userInteractive).async {
-                    handleGame.timerStart()
-                }
-                
-                
+            DispatchQueue.global(qos: .userInteractive).async {
+                handleGame.gameTimeStart()
             }
             handleGame.handleReload()
         }
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

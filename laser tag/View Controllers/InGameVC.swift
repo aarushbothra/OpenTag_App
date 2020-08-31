@@ -40,6 +40,7 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         handleGame = GameHandler()
         
         bluetooth.activeVC = "inGame"
@@ -77,9 +78,6 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
         if Game.timeLimit == 0 {
             timerLabel.text = "Unlimited"
         }
-        
-        
-        
     }
     
     func setTimerLabel(string: String) {
@@ -158,12 +156,13 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
     }
     
     @IBAction func plusButton(_ sender: Any) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
-        let showPlusOptionsVC = mainStoryboard.instantiateViewController(identifier: "ShowPlusOptionsVC") as! ShowPlusOptions
-        
-        present(showPlusOptionsVC, animated: true)
-        print("presenting plus options")
+//        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//
+//        let showPlusOptionsVC = mainStoryboard.instantiateViewController(identifier: "ShowPlusOptionsVC") as! ShowPlusOptions
+//
+//        present(showPlusOptionsVC, animated: true)
+//        print("presenting plus options")
+        NFCRead.readNFCTag()
     }
     
     @IBAction func minusButton(_ sender: Any) {
@@ -187,10 +186,11 @@ class InGameVC: UIViewController, BTDelegateInGame, TCPDelegateInGame, GameHandl
     }
     
     func gameOver() {
+        bluetooth.disconnectGun()
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         let gameOverVC = mainStoryboard.instantiateViewController(identifier: "GameOverVC") as! GameOverVC
-         bluetooth.disconnectGun()
+         
         self.navigationController?.pushViewController(gameOverVC, animated: true)
         print("switching to gameOverVC")
        

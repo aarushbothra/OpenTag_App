@@ -88,7 +88,6 @@ class LobbyVC: UIViewController, BTDelegateLobby, TCPDelegateLobby {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         let inGameVC = mainStoryboard.instantiateViewController(identifier: "InGameVC") as! InGameVC
-        
         self.navigationController?.pushViewController(inGameVC, animated: true)
         print("switching to inGameVC")
     }
