@@ -63,6 +63,7 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
             case 0:
                 if nfcMessage == "respawn"{
                     self.deathScreenNFC.respawn()
+                    session.alertMessage = "Respawning..."
                 } else {
                     session.alertMessage = "Invalid NFC Tag"
                 }
@@ -71,6 +72,7 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
                     nfcMessage = nfcMessage.replacingOccurrences(of: "addr: ", with: "")
                     let stringArray = nfcMessage.components(separatedBy: ",")
                     networking.connectToServer(addr: stringArray[0], port: Int32(Int(stringArray[1]) ?? 1))
+                    session.alertMessage = "Connecting to server..."
                 } else {
                     session.alertMessage = "Invalid NFC Tag"
                 }
@@ -79,11 +81,13 @@ class NFCReadHandler: NSObject, NFCNDEFReaderSessionDelegate {
                 case "respawn":
                     if handleGame.playerWithOddball.gunID != handleGame.playerSelf.gunID {
                         handleGame.respawn()
+                        session.alertMessage = "Health and ammo refilled"
                     }
                     
                 case "oddball":
-                    if handleGame.playerWithOddball.gunID == -1 {
+                    if handleGame.playerWithOddball.gunID == -1 && Game.gameType == 1 {
                         networking.oddballReceived()
+                        session.alertMessage = "Oddball claimed"
                     } else {
                         session.alertMessage = "Oddball has already been claimed"
                     }
